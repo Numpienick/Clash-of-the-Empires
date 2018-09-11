@@ -30,10 +30,10 @@ public class Click : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        /*if (Input.GetMouseButtonDown(1))
         {
             clearSelection();
-        }
+        }*/
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -80,7 +80,7 @@ public class Click : MonoBehaviour {
             {
                 SelectObjects();
             }
-        }
+        } 
     }
 
     void SelectObjects()
