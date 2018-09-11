@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 681, y: 492}
+  m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 31678
+  controlID: 664
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,10 +120,10 @@ MonoBehaviour:
     y: 0
     width: 1368
     height: 947
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 31654
+  controlID: 612
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,10 +144,10 @@ MonoBehaviour:
     y: 0
     width: 1368
     height: 572
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 31655
+  controlID: 575
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -201,9 +201,9 @@ MonoBehaviour:
     height: 551
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b8a00000
-    m_LastClickedID: 41144
-    m_ExpandedIDs: 8061efff30a1f0ffaeaef0ffa68cf4ff348df4ffa690f4ffb290f4ff22f1f7ffbcc7faff50cbfaffd4f1faff2e02fbff7e12fbff4830fbff6676fbffda79fbffb098fbfffc9afbff0c9dfbff521bfcffde84fcfffa88fcffd0a7fdffceb5ffff82fbffff0000000018680000da6c0000788d00009c8d0000bc8d000082a0000094a00000b8a00000d8a00000
+    m_SelectedIDs: ec5a0000
+    m_LastClickedID: 23276
+    m_ExpandedIDs: e667ffff00000000dc5a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -222,7 +222,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
   m_ExpandedScenes:
-  - 
+  - Clash of the Empires
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -281,13 +281,13 @@ MonoBehaviour:
     height: 551
   m_SceneLighting: 1
   lastFramingTime: 17779.80048072808
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 366.94485, y: 180.16899, z: -2.5187628}
+    m_Target: {x: 183.92879, y: 291.80725, z: 400.56406}
     speed: 2
-    m_Value: {x: 366.94485, y: 180.16899, z: -2.5187628}
+    m_Value: {x: 183.92879, y: 291.80725, z: 400.56406}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -302,25 +302,25 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-    zGrid:
       m_Target: 1
       speed: 2
       m_Value: 1
+    zGrid:
+      m_Target: 0
+      speed: 2
+      m_Value: 0
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_Size:
-    m_Target: 526.11084
+    m_Target: 200.02127
     speed: 2
-    m_Value: 526.11084
+    m_Value: 200.02127
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_ShowGlobalGrid: 1
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
@@ -372,8 +372,8 @@ MonoBehaviour:
     y: 572
     width: 1368
     height: 375
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -424,13 +424,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts/PlaceableScript
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: H:\Gamedevelopment\Unity\Clash of the Empires
+  m_LastProjectPath: E:\School\y2\RealTimeStrategy\.gitignore
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fa2a0000
-    m_LastClickedID: 11002
-    m_ExpandedIDs: 0000000000290000482a00002a34000030340000543400000a3500001435000046350000e870000002710000847d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 127}
+    m_SelectedIDs: e2560000
+    m_LastClickedID: 22242
+    m_ExpandedIDs: 000000002a560000e856000022570000345700008c5700005858000008590000b8590000fe590000605a00009e5b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -458,7 +458,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000000290000482a00002a34000030340000543400000a3500001435000046350000e870000002710000847d000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000002a560000e856000022570000345700008c5700005858000008590000b8590000fe590000605a00009e5b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -483,9 +483,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b8a00000
-    m_LastClickedInstanceID: 41144
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: ec5a0000
+    m_LastClickedInstanceID: 23276
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000e4ff0ff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -535,10 +535,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 664
-    width: 1366
-    height: 354
+    x: 8
+    y: 662
+    width: 1355
+    height: 348
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
