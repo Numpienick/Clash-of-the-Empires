@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Placeable", menuName = "Placeable/Placeable")]
 public class Placeables : Player
 {
     int cost;
@@ -59,6 +60,7 @@ public class Placeables : Player
 
     public void SummonUnit()
     {
+        Debug.Log("Unit summoned");
         int unit = Random.Range(0, 5);
         Debug.Log(unit);
         if (unit == 0)

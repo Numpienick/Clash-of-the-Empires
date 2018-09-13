@@ -2,7 +2,7 @@
 
 public class cameraMovement : MonoBehaviour {
 
-    public float panSpeed = 20;
+    public float panSpeed = 20f;
     public float panBorderThickness = 10;
     public Vector2 panLimit;
     public float scrollSpeed = 20;
@@ -10,7 +10,7 @@ public class cameraMovement : MonoBehaviour {
     public float maxY = 120f;
 
 	void Update () {
-        panSpeed = 20f;
+        //panSpeed = 20f;
         Vector3 pos = transform.position;
 
 		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
