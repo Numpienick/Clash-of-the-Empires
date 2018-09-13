@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-[CreateAssetMenu(fileName = "New Placeable", menuName = "Placeable/Placeable")]
+//[CreateAssetMenu(fileName = "New Placeable", menuName = "Placeable/Placeable")]
 public class Placeables : Player
 {
-    int cost;
+    //int cost;
     public float CurrentHealth;
     public float MaxHealth = 100;
 
-
+    public GameObject barracks;
+    public GameObject goldmine;
+    public GameObject archer;
+    public GameObject barbarian;
+    public GameObject achmed;
+    public GameObject healer;
+    
     private Player playerRef;
     public GameObject Placeable;
 
@@ -30,9 +38,6 @@ public class Placeables : Player
     {
         if (Input.GetKeyDown(KeyCode.X))
             DealDamage(6);
-
-        if (Input.GetKeyDown(KeyCode.P))
-            SummonUnit();
     }
 
     void DealDamage(float damageValue)
@@ -58,26 +63,48 @@ public class Placeables : Player
 
     }
 
-    public void SummonUnit()
+    public void PlaceUnit(int cost, float unitHealth, GameObject unitType)
     {
-        Debug.Log("Unit summoned");
-        int unit = Random.Range(0, 5);
-        Debug.Log(unit);
-        if (unit == 0)
-            cost = 100;
+        if (playerRef.money - cost >= 0)
+        {
+            playerRef.money -= cost;
+        }
+    }
 
-        if (unit == 1)
-            cost = 200;
 
-        if (unit == 2)
-            cost = 300;
+    public void Barracks()
+    {
+        PlaceUnit(100, 200, barracks);
+        Debug.Log("Unit placed");
+    }
 
-        if (unit == 3)
-            cost = 400;
+    public void Goldmine()
+    {
+        PlaceUnit(200, 200, goldmine);
+        Debug.Log("Unit placed");
+    }
 
-        if (unit == 4)
-            cost = 500;
+    public void Archer()
+    {
+        PlaceUnit(300, 200, archer);
+        Debug.Log("Unit placed");
+    }
 
-        playerRef.money -= cost;
+    public void Barbarian()
+    {
+        PlaceUnit(400, 200, barbarian);
+        Debug.Log("Unit placed");
+    }
+
+    public void Achmed()
+    {
+        PlaceUnit(500, 200, achmed);
+        Debug.Log("Unit placed");
+    }
+
+    public void Healer()
+    {
+        PlaceUnit(600, 200, healer);
+        Debug.Log("Unit placed");
     }
 }
