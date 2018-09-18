@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
 public class Placeables : Player
 {
     public float CurrentHealth;
@@ -14,12 +15,12 @@ public class Placeables : Player
     public GameObject achmed;
     public GameObject healer;
     private Player playerRef;
-    
+
     public float GetHealthPct()
     {
         return CurrentHealth / MaxHealth;
     }
-    
+
     void Start()
     {
         CurrentHealth = MaxHealth;
@@ -44,7 +45,6 @@ public class Placeables : Player
     {
         CurrentHealth = 0;
         Debug.Log("dead");
-
         Destroy(gameObject);
     }
 
