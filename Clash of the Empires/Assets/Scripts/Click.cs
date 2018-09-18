@@ -7,7 +7,7 @@ public class Click : MonoBehaviour {
     [SerializeField]
     private LayerMask clickablesLayer;
 
-    private List<GameObject> selectedObjects;
+    public List<GameObject> selectedObjects;
 
 
     [HideInInspector]
@@ -15,6 +15,9 @@ public class Click : MonoBehaviour {
 
     public Vector3 mousePos1;
     public Vector3 mousePos2;
+
+    public LayerMask groundLayer;
+    Camera cam;
 
     private ClickOn checkSelected;
 
@@ -106,6 +109,7 @@ public class Click : MonoBehaviour {
                     selectedObjects.Add(selectObject);
                     selectObject.GetComponent<ClickOn>().currentlySelected = true;
                     selectObject.GetComponent<ClickOn>().ClickMe();
+                    selectObject.GetComponent<Movement>().playerAgent.SetDestination(GetPointUnderCursor());
                 }
             }
             else
@@ -141,4 +145,16 @@ public class Click : MonoBehaviour {
         }
     }
 
+    public Vector3 GetPointUnderCursor()
+    {
+        Vector2 screenPosition = Input.mousePosition;
+        Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(screenPosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hitPosition;
+
+        Physics.Raycast(ray, out hitPosition, 1000000, groundLayer);
+
+        return hitPosition.point;
+    }
 }

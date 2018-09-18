@@ -10,7 +10,8 @@ public class Movement : MonoBehaviour {
     public LayerMask groundLayer;
     public NavMeshAgent playerAgent;
 
-    private ClickOn checkSelected;
+    public List<GameObject> currentlySelected;
+    public Click checkSelected;
  
 
     #region Monobehaviour API
@@ -19,12 +20,11 @@ public class Movement : MonoBehaviour {
     void Awake ()
     {
         cam = Camera.main;
-        checkSelected = GameObject.FindObjectOfType<ClickOn>();
-	}
+    }
 	
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(1) & checkSelected.currentlySelected == true)
+        if (Input.GetMouseButtonDown(1))
         {
             playerAgent.SetDestination(GetPointUnderCursor());     
         }
@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour {
 
     #endregion
 
-    private Vector3 GetPointUnderCursor()
+    public Vector3 GetPointUnderCursor()
     {
         Vector2 screenPosition = Input.mousePosition;
         Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(screenPosition);
