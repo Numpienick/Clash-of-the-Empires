@@ -10,22 +10,23 @@ public class Movement : MonoBehaviour {
     public LayerMask groundLayer;
     public NavMeshAgent playerAgent;
 
+    private ClickOn checkSelected;
+ 
+
     #region Monobehaviour API
+
 
     void Awake ()
     {
         cam = Camera.main;
+        checkSelected = GameObject.FindObjectOfType<ClickOn>();
 	}
 	
 	void Update ()
     {
-		if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) & checkSelected.currentlySelected == true)
         {
-            playerAgent.SetDestination(GetPointUnderCursor());
-
-            print("cursor" + Input.mousePosition);
-            
-
+            playerAgent.SetDestination(GetPointUnderCursor());     
         }
 	}
 

@@ -16,9 +16,12 @@ public class Click : MonoBehaviour {
     public Vector3 mousePos1;
     public Vector3 mousePos2;
 
+    private ClickOn checkSelected;
+
 
     private void Awake()
     {
+        checkSelected = GameObject.FindObjectOfType<ClickOn>();
         selectedObjects = new List<GameObject>();
         selectableObjects = new List<GameObject>();
     }
@@ -30,10 +33,10 @@ public class Click : MonoBehaviour {
 
     void Update()
     {
-        /*if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) & checkSelected.currentlySelected == true)
         {
             clearSelection();
-        }*/
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
