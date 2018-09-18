@@ -16,6 +16,9 @@ public class Placeables : Player
     public GameObject healer;
     private Player playerRef;
 
+    public Vector3 spawnpoint;
+
+
     public float GetHealthPct()
     {
         return CurrentHealth / MaxHealth;
@@ -71,6 +74,7 @@ public class Placeables : Player
     public void Archer()
     {
         PlaceUnit(300, 200, archer);
+        Instantiate(archer, Random.insideUnitSphere * 10 + spawnpoint, Quaternion.identity);
         Debug.Log("Unit placed");
     }
 
