@@ -57,6 +57,10 @@ public class Placeables : Player
         {
             playerRef.money -= cost;
         }
+        if (playerRef.money - cost <= 0)
+        {
+            print("Geen geld");
+        }
     }
 
     public void Barracks()
@@ -74,26 +78,29 @@ public class Placeables : Player
     public void Archer()
     {
         PlaceUnit(300, 200, archer);
-        Instantiate(archer, Random.insideUnitSphere * 10 + spawnpoint, Quaternion.identity);
-        Debug.Log("Unit placed");
+        Instantiate(archer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
+       // Debug.Log("Unit placed");
     }
 
     public void Barbarian()
     {
         PlaceUnit(400, 200, barbarian);
-        Debug.Log("Unit placed");
+        Instantiate(barbarian, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
+       // Debug.Log("Unit placed");
     }
 
     public void Achmed()
     {
         PlaceUnit(500, 200, achmed);
-        Debug.Log("Unit placed");
+        Instantiate(achmed, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
+       // Debug.Log("Unit placed");
     }
 
     public void Healer()
     {
         PlaceUnit(600, 200, healer);
-        Debug.Log("Unit placed");
+        Instantiate(healer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
+      //  Debug.Log("Unit placed");
     }
 
 }

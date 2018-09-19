@@ -13,10 +13,8 @@ public class Movement : MonoBehaviour {
 
     [HideInInspector]
     public List<GameObject> selectableObjects;
-
     public Vector3 mousePos1;
     public Vector3 mousePos2;
-
     public NavMeshAgent playerAgent;
     public LayerMask groundLayer;
     Camera cam;
