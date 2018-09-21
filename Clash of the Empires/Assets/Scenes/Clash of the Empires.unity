@@ -2483,7 +2483,6 @@ GameObject:
   - component: {fileID: 1977698359}
   - component: {fileID: 1977698363}
   - component: {fileID: 1977698365}
-  - component: {fileID: 1977698364}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2570,28 +2569,6 @@ MonoBehaviour:
   scrollSpeed: 20
   minY: 20
   maxY: 120
---- !u!114 &1977698364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1977698358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae25f7da777f2e449c19c1566eb596a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickablesLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  selectedObjects: []
-  selectableObjects: []
-  mousePos1: {x: 0, y: 0, z: 0}
-  mousePos2: {x: 0, y: 0, z: 0}
-  playerAgent: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &1977698365
 MonoBehaviour:
   m_ObjectHideFlags: 0
