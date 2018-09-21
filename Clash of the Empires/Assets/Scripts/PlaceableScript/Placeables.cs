@@ -50,8 +50,7 @@ public class Placeables : Player
         }
 
         if (Input.GetKeyDown(KeyCode.X))
-            Instantiate(goldmine, movementRef.GetPointUnderCursor(), Quaternion.identity);
-        //DealDamage(6);
+            DealDamage(6);
     }
 
     void DealDamage(float damageValue)
