@@ -21,7 +21,7 @@ public class ClickOn : MonoBehaviour
     private void Start()
     {
         myRend = GetComponent<MeshRenderer>();
-        Camera.main.gameObject.GetComponent<Click>().selectableObjects.Add(this.gameObject);
+        Camera.main.gameObject.GetComponent<Movement>().selectableObjects.Add(this.gameObject);
         ClickMe();
     }
 
