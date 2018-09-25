@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassiveBuildings : Placeables {
     public int amountToSpawn = 0;
-    public int timeToSpawn = 0;
+    public float timeToSpawn = 0;
     public float timeAlive = 0;
     
 	// Use this for initialization
