@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Placeables : Player
 {
-    public float CurrentHealth;
-    public float MaxHealth = 100;
+    public float CurrentHealth = 20f;
+    public float MaxHealth = 100f;
     public GameObject barracks;
     public GameObject goldmine;
     public GameObject archer;
@@ -28,7 +28,7 @@ public class Placeables : Player
         return CurrentHealth / MaxHealth;
     }
 
-    void Start()
+    void Awake()
     {
         movementRef = Camera.main.GetComponent<Movement>();
         CurrentHealth = MaxHealth;
