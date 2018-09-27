@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 23767000696062562}
   - component: {fileID: 114673764118563514}
   - component: {fileID: 195217496720511202}
-  - component: {fileID: 114918071553688422}
+  - component: {fileID: 114533318357825998}
   m_Layer: 8
   m_Name: Barbarian
   m_TagString: Untagged
@@ -289,7 +289,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114673764118563514
+--- !u!114 &114533318357825998
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -297,21 +297,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1447319048589936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ece1d9d5aa14f8d48a92c7d7543bbda1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: 7f85fd5363a88ac428aeefc76241fe04, type: 2}
-  green: {fileID: 2100000, guid: 20a8de7bd84084c47866f21e2c08d27d, type: 2}
-  currentlySelected: 0
---- !u!114 &114918071553688422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447319048589936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229e5676d72a127488318fdcdb14c2df, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b6c4820cc19824b8446eccdc85b522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: 0
@@ -334,6 +320,20 @@ MonoBehaviour:
   visionRange: 0
   shootingRange: 0
   fireRate: 0
+--- !u!114 &114673764118563514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447319048589936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece1d9d5aa14f8d48a92c7d7543bbda1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red: {fileID: 2100000, guid: 7f85fd5363a88ac428aeefc76241fe04, type: 2}
+  green: {fileID: 2100000, guid: 20a8de7bd84084c47866f21e2c08d27d, type: 2}
+  currentlySelected: 0
 --- !u!195 &195217496720511202
 NavMeshAgent:
   m_ObjectHideFlags: 1
