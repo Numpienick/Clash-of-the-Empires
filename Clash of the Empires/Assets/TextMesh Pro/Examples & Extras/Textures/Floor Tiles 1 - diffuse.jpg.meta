@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: cee908a816886a640a4b93220013965f
-timeCreated: 1537890497
-licenseType: Free
+guid: 7bbfb8818476e4641ba3e75f5225eb69
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -27,8 +25,8 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 1
-  maxTextureSize: 2048
+  textureFormat: -1
+  maxTextureSize: 1024
   textureSettings:
     serializedVersion: 2
     filterMode: -1
@@ -57,7 +55,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
