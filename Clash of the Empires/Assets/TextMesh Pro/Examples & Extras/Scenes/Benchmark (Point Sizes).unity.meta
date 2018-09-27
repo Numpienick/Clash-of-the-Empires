@@ -1,7 +1,23 @@
 fileFormatVersion: 2
-guid: 46b616421cbe25344a473f56bf8a6c1a
-timeCreated: 1537890470
-licenseType: Free
+guid: 517485014eb55ab4ba4f196423786576
+labels:
+- Mesh
+- Text
+- Rendering
+- TextMesh
+- TextMeshPro
+- Font
+- Dynamic
+- Pro
+- Fonts
+- Advanced
+- GUI
+- Scene
+- Styles
+- Style
+- Layout
+- Atlas
+- Kerning
 DefaultImporter:
   externalObjects: {}
   userData: 
