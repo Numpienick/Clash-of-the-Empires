@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Placeables : Player
 {
-    public float CurrentHealth = 20f;
-    public float MaxHealth = 100f;
+    public float currentHealth = 20f;
+    public float maxHealth = 100f;
     public GameObject barracks;
     public GameObject goldmine;
     public GameObject archer;
@@ -24,22 +24,32 @@ public class Placeables : Player
 
     public Vector3 spawnpoint;
 
+    private Transform healthBar;
+    private Canvas canvas;
+    [HideInInspector]
+    public Slider healthFill;
+
+    public float healthbarOffsetY = 1.13f;
+
 
     public float GetHealthPct()
     {
-        return CurrentHealth / MaxHealth;
+        return currentHealth / maxHealth;
     }
 
     void Awake()
     {
+        canvas = GetComponentInChildren<Canvas>();
+        healthBar = canvas.GetComponent<RectTransform>();
         movementRef = Camera.main.GetComponent<Movement>();
-        CurrentHealth = MaxHealth;
+        currentHealth = maxHealth;
         playerRef = GetComponent<Player>();
         grid = FindObjectOfType<MainGrid>();
     }
 
     void Update()
     {
+
         if (goldmineSelected == true && Input.GetMouseButtonDown(1))
         {
             RaycastHit hitInfo;
@@ -56,21 +66,14 @@ public class Placeables : Player
             goldmineSelected = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-            DealDamage(6);
+
     }
 
-    void DealDamage(float damageValue)
-    {
-        CurrentHealth -= damageValue;
-        Debug.Log("ouch");
-        if (CurrentHealth <= 0 && gameObject.tag == "Placeables")
-            Die();
-    }
+
 
     void Die()
     {
-        CurrentHealth = 0;
+        currentHealth = 0;
         Debug.Log("dead");
         Destroy(gameObject);
     }
@@ -133,6 +136,14 @@ public class Placeables : Player
         PlaceUnit(600, 200, healer);
         Instantiate(healer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
         //  Debug.Log("Unit placed");
+    }
+
+    public void UpdateHealthBarPosition()
+    {
+        Vector3 currentPos = transform.position;
+
+        healthBar.position = new Vector3(currentPos.x, currentPos.y + healthbarOffsetY, currentPos.z);
+        healthBar.LookAt(Camera.main.transform);
     }
 
 }
