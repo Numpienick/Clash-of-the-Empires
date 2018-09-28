@@ -41,6 +41,7 @@ public class Placeables : Player
     {
         canvas = GetComponentInChildren<Canvas>();
         healthBar = canvas.GetComponent<RectTransform>();
+        healthFill = canvas.GetComponentInChildren<Slider>();
         movementRef = Camera.main.GetComponent<Movement>();
         currentHealth = maxHealth;
         playerRef = GetComponent<Player>();
@@ -65,15 +66,10 @@ public class Placeables : Player
         {
             goldmineSelected = false;
         }
-
-
     }
 
-
-
-    void Die()
+    public void Die()
     {
-        currentHealth = 0;
         Debug.Log("dead");
         Destroy(gameObject);
     }

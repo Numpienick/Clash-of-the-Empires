@@ -25,5 +25,9 @@ public class Barbarian : OffensivePlaceables
     {
         currentHealth -= damageValue;
         Debug.Log("ouch");
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 }
