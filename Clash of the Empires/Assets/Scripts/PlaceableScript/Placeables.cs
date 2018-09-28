@@ -16,6 +16,8 @@ public class Placeables : Player
     public GameObject healer;
     public Player playerRef;
 
+    private MainGrid grid;
+
     private bool goldmineSelected = false;
 
     private Movement movementRef;
@@ -33,15 +35,20 @@ public class Placeables : Player
         movementRef = Camera.main.GetComponent<Movement>();
         CurrentHealth = MaxHealth;
         playerRef = GetComponent<Player>();
+        grid = FindObjectOfType<MainGrid>();
     }
 
     void Update()
     {
         if (goldmineSelected == true && Input.GetMouseButtonDown(1))
         {
-            PlaceUnit(200, 200, goldmine);
-            Instantiate(goldmine, movementRef.GetPointUnderCursor(), Quaternion.identity);
-            goldmineSelected = false;
+            RaycastHit hitInfo;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                goldMine(hitInfo.point);
+            }
         }
 
         if (goldmineSelected == true && Input.GetMouseButtonDown(0))
@@ -78,6 +85,15 @@ public class Placeables : Player
         {
             Debug.Log("Skere Tijden");
         }
+    }
+
+    public void goldMine(Vector3 clickPoint)
+    {
+        var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
+        goldmine.transform.position = finalPosition;
+        PlaceUnit(200, 200, goldmine);
+        Instantiate(goldmine, finalPosition, Quaternion.identity);
+        goldmineSelected = false;
     }
 
     public void Barracks()
