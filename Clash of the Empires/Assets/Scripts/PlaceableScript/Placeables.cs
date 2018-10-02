@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Placeables : Player
 {
-    public float CurrentHealth = 20f;
-    public float MaxHealth = 100f;
+    public float currentHealth = 20f;
+    public float maxHealth = 100f;
     public GameObject barracks;
     public GameObject goldmine;
     public GameObject archer;
@@ -16,54 +16,60 @@ public class Placeables : Player
     public GameObject healer;
     public Player playerRef;
 
+    private MainGrid grid;
+
     private bool goldmineSelected = false;
 
     private Movement movementRef;
 
     public Vector3 spawnpoint;
 
+    private Transform healthBar;
+    private Canvas canvas;
+    [HideInInspector]
+    public Slider healthFill;
+
+    public float healthbarOffsetY = 1.13f;
+
 
     public float GetHealthPct()
     {
-        return CurrentHealth / MaxHealth;
+        return currentHealth / maxHealth;
     }
 
     void Awake()
     {
+        canvas = GetComponentInChildren<Canvas>();
+        healthBar = canvas.GetComponent<RectTransform>();
+        healthFill = canvas.GetComponentInChildren<Slider>();
         movementRef = Camera.main.GetComponent<Movement>();
-        CurrentHealth = MaxHealth;
+        currentHealth = maxHealth;
         playerRef = GetComponent<Player>();
+        grid = FindObjectOfType<MainGrid>();
     }
 
     void Update()
     {
+
         if (goldmineSelected == true && Input.GetMouseButtonDown(1))
         {
-            PlaceUnit(200, 200, goldmine);
-            Instantiate(goldmine, movementRef.GetPointUnderCursor(), Quaternion.identity);
-            goldmineSelected = false;
+            RaycastHit hitInfo;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                goldMine(hitInfo.point);
+            }
         }
 
         if (goldmineSelected == true && Input.GetMouseButtonDown(0))
         {
             goldmineSelected = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.X))
-            DealDamage(6);
     }
 
-    void DealDamage(float damageValue)
+    public void Die()
     {
-        CurrentHealth -= damageValue;
-        Debug.Log("ouch");
-        if (CurrentHealth <= 0 && gameObject.tag == "Placeables")
-            Die();
-    }
-
-    void Die()
-    {
-        CurrentHealth = 0;
         Debug.Log("dead");
         Destroy(gameObject);
     }
@@ -78,6 +84,15 @@ public class Placeables : Player
         {
             Debug.Log("Skere Tijden");
         }
+    }
+
+    public void goldMine(Vector3 clickPoint)
+    {
+        var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
+        goldmine.transform.position = finalPosition;
+        PlaceUnit(200, 200, goldmine);
+        Instantiate(goldmine, finalPosition, Quaternion.identity);
+        goldmineSelected = false;
     }
 
     public void Barracks()
@@ -117,6 +132,14 @@ public class Placeables : Player
         PlaceUnit(600, 200, healer);
         Instantiate(healer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
         //  Debug.Log("Unit placed");
+    }
+
+    public void UpdateHealthBarPosition()
+    {
+        Vector3 currentPos = transform.position;
+
+        healthBar.position = new Vector3(currentPos.x, currentPos.y + healthbarOffsetY, currentPos.z);
+        healthBar.LookAt(Camera.main.transform);
     }
 
 }
