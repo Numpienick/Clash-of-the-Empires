@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barbarian : OffensivePlaceables
+public class Achmed : OffensivePlaceables
 {
 
     // Use this for initialization
     void Start()
     {
-        healthbarOffsetY = 6;
+        healthbarOffsetY = 7;
     }
 
     // Update is called once per frame

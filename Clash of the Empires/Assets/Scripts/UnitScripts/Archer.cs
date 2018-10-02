@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barbarian : OffensivePlaceables
+public class Archer : OffensivePlaceables
 {
 
     // Use this for initialization
