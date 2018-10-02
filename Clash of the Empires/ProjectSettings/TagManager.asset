@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Placeables
+  - Enemy
   layers:
   - Default
   - TransparentFX
