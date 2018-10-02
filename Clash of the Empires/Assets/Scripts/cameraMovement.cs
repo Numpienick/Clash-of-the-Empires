@@ -7,31 +7,43 @@ public class cameraMovement : MonoBehaviour {
     public Vector2 panLimit;
     public float scrollSpeed = 20;
     public float minY = 20f;
-    public float maxY = 120f;
+    public float maxY = 200f;
+    public float pivotSpeed = 100f;
 
-	void Update () {
+    void Update () {
         //panSpeed = 20f;
         Vector3 pos = transform.position;
 
-		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
+		if (Input.GetKey("w"))
         {
-            pos.z += panSpeed * Time.deltaTime; 
+            transform.Translate (panSpeed *  Vector3.back * Time.deltaTime);
         }
 
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
+        if (Input.GetKey("s"))
         {
-            pos.z -= panSpeed * Time.deltaTime;
+           transform.Translate (panSpeed *  Vector3.forward * Time.deltaTime);
         }
 
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
+        if (Input.GetKey("d"))
         {
-            pos.x += panSpeed * Time.deltaTime;
+            transform.Translate (panSpeed * Vector3.right * Time.deltaTime);
         }
 
-        if (Input.GetKey("a") || Input.mousePosition.x <=  panBorderThickness)
+        if (Input.GetKey("a"))
         {
-            pos.x -= panSpeed * Time.deltaTime;
+            transform.Translate (panSpeed * Vector3.left * Time.deltaTime);
         }
+
+        if (Input.GetKey("q"))
+        {
+            transform.Rotate (pivotSpeed * Vector3.down * Time.deltaTime);
+        }
+
+        if (Input.GetKey("e"))
+        {
+            transform.Rotate (pivotSpeed * Vector3.up * Time.deltaTime);
+        }
+
 
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
