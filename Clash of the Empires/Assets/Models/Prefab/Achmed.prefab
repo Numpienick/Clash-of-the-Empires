@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 114615279803230404}
   - component: {fileID: 195401690139028462}
   - component: {fileID: 114889223201855362}
-  - component: {fileID: 135051418711888626}
   m_Layer: 8
   m_Name: Achmed
   m_TagString: Placeables
@@ -191,6 +190,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4499734390643350}
+  - component: {fileID: 135332148475575074}
   m_Layer: 0
   m_Name: Achmed
   m_TagString: Untagged
@@ -851,17 +851,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!135 &135051418711888626
+--- !u!135 &135332148475575074
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310302097904350}
+  m_GameObject: {fileID: 1837467228221690}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195401690139028462
 NavMeshAgent:

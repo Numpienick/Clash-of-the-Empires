@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061171830221264}
   - component: {fileID: 95362075435783860}
+  - component: {fileID: 135495331128133650}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -92,7 +93,6 @@ GameObject:
   - component: {fileID: 195217496720511202}
   - component: {fileID: 114533318357825998}
   - component: {fileID: 114891946599753232}
-  - component: {fileID: 135263112440860430}
   m_Layer: 8
   m_Name: Barbarian
   m_TagString: Placeables
@@ -581,17 +581,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!135 &135263112440860430
+--- !u!135 &135495331128133650
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447319048589936}
+  m_GameObject: {fileID: 1322743572337348}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195217496720511202
 NavMeshAgent:

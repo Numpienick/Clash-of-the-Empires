@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 195227842389657882}
   - component: {fileID: 114875724161776782}
   - component: {fileID: 114473188849772304}
-  - component: {fileID: 135422493176989010}
   m_Layer: 8
   m_Name: Archer
   m_TagString: Placeables
@@ -124,6 +123,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4732483971949002}
+  - component: {fileID: 135198211292418518}
   m_Layer: 0
   m_Name: Archer (1)
   m_TagString: Untagged
@@ -751,17 +751,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!135 &135422493176989010
+--- !u!135 &135198211292418518
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1712396746432380}
+  m_GameObject: {fileID: 1716701095302258}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195227842389657882
 NavMeshAgent:

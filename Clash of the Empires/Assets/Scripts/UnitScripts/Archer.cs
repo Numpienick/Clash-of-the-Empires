@@ -18,11 +18,7 @@ public class Archer : OffensivePlaceables
     {
         GameObject Temporary_Bullet_Handler;
         Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
-       // Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 180);
-
-        Rigidbody Temporary_RigidBody;
-        Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
-
+       //Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 180);
         Destroy(Temporary_Bullet_Handler, 10.0f);
     }
 }
