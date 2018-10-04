@@ -1007,8 +1007,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 450390504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 113.11107, y: -2.3488083, z: -102.03064}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 113.11107, y: 72.9, z: -102.03064}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1977698362}
   m_Father: {fileID: 972059452}
@@ -1029,8 +1029,8 @@ MonoBehaviour:
   panBorderThickness: 10
   panLimit: {x: 300, y: 300}
   scrollSpeed: 20
-  minY: 20
-  maxY: 120
+  minY: 1
+  maxY: 1000
   pivotSpeed: 60
 --- !u!1 &471708517 stripped
 GameObject:
