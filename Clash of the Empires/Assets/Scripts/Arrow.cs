@@ -5,7 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
 
-    private Vector3 velocity = new Vector3(0, 5, 8);
+    private Vector3 velocity = new Vector3(0, 1, 10);
     private float gravity = 9.8f;
 
     public float speed = 10f;
