@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4564685026942778}
   - component: {fileID: 95380640848969426}
+  - component: {fileID: 135219533538793820}
   m_Layer: 0
   m_Name: Healer (2)
   m_TagString: Untagged
@@ -71,7 +72,7 @@ GameObject:
   - component: {fileID: 224719536800693956}
   - component: {fileID: 222684577007536846}
   - component: {fileID: 114572212026718792}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Background Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +90,7 @@ GameObject:
   - component: {fileID: 223677315229540426}
   - component: {fileID: 114409609621198526}
   - component: {fileID: 114936399329361686}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +107,7 @@ GameObject:
   - component: {fileID: 224565231547294690}
   - component: {fileID: 222449579990351246}
   - component: {fileID: 114672928084331928}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224411062625694912}
   - component: {fileID: 114919446055243018}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +144,6 @@ GameObject:
   - component: {fileID: 195206775125453168}
   - component: {fileID: 114090961326996934}
   - component: {fileID: 114998668370553504}
-  - component: {fileID: 135080556189763760}
   m_Layer: 8
   m_Name: Healer
   m_TagString: Placeables
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224355381856773514}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1883706575900234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.41291, y: 8.97, z: -38.018593}
+  m_LocalPosition: {x: 131.84053, y: 23.4, z: -47.6}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4564685026942778}
@@ -581,17 +581,17 @@ MonoBehaviour:
   visionRange: 0
   shootingRange: 0
   fireRate: 0
---- !u!135 &135080556189763760
+--- !u!135 &135219533538793820
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883706575900234}
+  m_GameObject: {fileID: 1007867849574188}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195206775125453168
 NavMeshAgent:
@@ -691,7 +691,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788876885040354}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.29496765, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224355381856773514}
@@ -710,7 +710,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1785422133303356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224355381856773514}
@@ -728,7 +728,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331676044289278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000038146973, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.027727451, y: 0.051396914, z: 1}
   m_Children:
   - {fileID: 224411062625694912}

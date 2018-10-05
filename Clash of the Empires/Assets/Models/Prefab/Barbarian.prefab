@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061171830221264}
   - component: {fileID: 95362075435783860}
+  - component: {fileID: 135495331128133650}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -71,7 +72,7 @@ GameObject:
   - component: {fileID: 224966377937382568}
   - component: {fileID: 222675678946057030}
   - component: {fileID: 114763138860920338}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Background Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +93,6 @@ GameObject:
   - component: {fileID: 195217496720511202}
   - component: {fileID: 114533318357825998}
   - component: {fileID: 114891946599753232}
-  - component: {fileID: 135263112440860430}
   m_Layer: 8
   m_Name: Barbarian
   m_TagString: Placeables
@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224085639045475178}
   - component: {fileID: 114906058262030020}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 224730807142032288}
   - component: {fileID: 222605602377782634}
   - component: {fileID: 114456535049900466}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 223962657856959188}
   - component: {fileID: 114323013800077470}
   - component: {fileID: 114651338625026252}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224575107636435292}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447319048589936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58, y: 5.5, z: -39.9}
+  m_LocalPosition: {x: 119.43037, y: 16.7, z: -47.3}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4061171830221264}
@@ -581,17 +581,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!135 &135263112440860430
+--- !u!135 &135495331128133650
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447319048589936}
+  m_GameObject: {fileID: 1322743572337348}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195217496720511202
 NavMeshAgent:
@@ -653,7 +653,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633050816256402}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.29496765, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224575107636435292}
@@ -672,7 +672,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1783705649881992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.118, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 224966377937382568}
@@ -710,7 +710,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773816078297594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224575107636435292}
@@ -728,7 +728,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433753599728048}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000038146973, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.027727451, y: 0.051396914, z: 1}
   m_Children:
   - {fileID: 224085639045475178}

@@ -14,12 +14,12 @@ public class cameraMovement : MonoBehaviour {
         //panSpeed = 20f;
         Vector3 pos = transform.position;
 
-		if (Input.GetKey("w"))
+		if (Input.GetKey("s"))
         {
             transform.Translate (panSpeed *  Vector3.back * Time.deltaTime);
         }
 
-        if (Input.GetKey("s"))
+        if (Input.GetKey("w"))
         {
            transform.Translate (panSpeed *  Vector3.forward * Time.deltaTime);
         }
@@ -53,7 +53,7 @@ public class cameraMovement : MonoBehaviour {
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
-        transform.position = pos;
+       //transform.position = pos;
 
 	}
 }
