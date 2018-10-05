@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Barbarian : OffensivePlaceables
 {
-    public SphereCollider visionCollider;
-    public GameObject target;
+
+    public Vector3 debugPos;
+    public Vector3 targetVector3;
 
     // Use this for initialization
     void Start()
@@ -17,16 +19,35 @@ public class Barbarian : OffensivePlaceables
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawLine(debugPos, targetVector3);
         killButton();
         checkRange();
     }
 
     void checkRange()
     {
-       
+        
+        Collider[] units =
+
+            Physics.OverlapSphere(transform.position, visionRange);
+
+        foreach (Collider nearbyUnit in units)
+        {
+            Units enemyTeamRef = nearbyUnit.GetComponent<Units>();
+            
+            if (enemyTeamRef.currentTeam != this.currentTeam)
+            {
+                targetVector3 = nearbyUnit.transform.position;
+                this.GetComponent<NavMeshAgent>().SetDestination(targetVector3);
+            }
+        }
     }
 
-
+    void attackTarget()
+    {
+      
+        this.GetComponent<NavMeshAgent>().SetDestination(targetVector3);
+    }
 
     void killButton()
     {
