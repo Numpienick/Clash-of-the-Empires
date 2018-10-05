@@ -17,8 +17,11 @@ public class Units : OffensivePlaceables
         if (Input.GetKeyDown(KeyCode.X))
             DealDamage(6);
 
-        UpdateHealthBarPosition();
-        healthFill.value = currentHealth / maxHealth;
+        if (canvas != null)
+        {
+            UpdateHealthBarPosition();
+            healthFill.value = currentHealth / maxHealth;
+        }
     }
 
     void DealDamage(float damageValue)

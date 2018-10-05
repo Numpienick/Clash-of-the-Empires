@@ -25,7 +25,8 @@ public class Placeables : Player
     public Vector3 spawnpoint;
 
     private Transform healthBar;
-    private Canvas canvas;
+    [HideInInspector]
+    public Canvas canvas;
     [HideInInspector]
     public Slider healthFill;
 
@@ -40,8 +41,11 @@ public class Placeables : Player
     void Awake()
     {
         canvas = GetComponentInChildren<Canvas>();
-        healthBar = canvas.GetComponent<RectTransform>();
-        healthFill = canvas.GetComponentInChildren<Slider>();
+        if (canvas != null)
+        {
+            healthBar = canvas.GetComponent<RectTransform>();
+            healthFill = canvas.GetComponentInChildren<Slider>();
+        }
         movementRef = Camera.main.GetComponent<Movement>();
         currentHealth = maxHealth;
         playerRef = GetComponent<Player>();
@@ -136,10 +140,13 @@ public class Placeables : Player
 
     public void UpdateHealthBarPosition()
     {
-        Vector3 currentPos = transform.position;
+        if (canvas != null)
+        {
+            Vector3 currentPos = transform.position;
 
-        healthBar.position = new Vector3(currentPos.x, currentPos.y + healthbarOffsetY, currentPos.z);
-        healthBar.LookAt(Camera.main.transform);
+            healthBar.position = new Vector3(currentPos.x, currentPos.y + healthbarOffsetY, currentPos.z);
+            healthBar.LookAt(Camera.main.transform);
+        }
     }
 
 }

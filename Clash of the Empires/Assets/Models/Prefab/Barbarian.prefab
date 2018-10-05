@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4061171830221264}
   - component: {fileID: 95362075435783860}
   - component: {fileID: 135495331128133650}
+  - component: {fileID: 114380636369655920}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -383,6 +384,41 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114380636369655920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322743572337348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160ded570fb76e54097b5a3d9f5d9f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCount: 0
+  gridSize: 0
+  amountOfTeams: 0
+  currentTeam: 1
+  enemy: {fileID: 0}
+  money: 1000
+  currentHealth: 20
+  maxHealth: 100
+  barracks: {fileID: 0}
+  goldmine: {fileID: 0}
+  archer: {fileID: 0}
+  barbarian: {fileID: 0}
+  achmed: {fileID: 0}
+  healer: {fileID: 0}
+  playerRef: {fileID: 0}
+  spawnpoint: {x: 0, y: 0, z: 0}
+  healthFill: {fileID: 0}
+  healthbarOffsetY: 1.13
+  damage: 0
+  visionRange: 0
+  shootingRange: 0
+  fireRate: 0
+  unitsRef: {fileID: 0}
+  mainTarget: {fileID: 0}
 --- !u!114 &114456535049900466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,6 +479,7 @@ MonoBehaviour:
   visionRange: 0
   shootingRange: 0
   fireRate: 0
+  targetCollider: {fileID: 0}
 --- !u!114 &114651338625026252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,7 +625,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322743572337348}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
