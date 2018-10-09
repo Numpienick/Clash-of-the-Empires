@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class CheckForEnemy : Units
 {
-    public Barbarian unitsRef;
+    private Barbarian unitsRef;
     public GameObject mainTarget;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         unitsRef = transform.root.GetComponent<Barbarian>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
-        Units enemyUnit = other.GetComponent<Units>();
-        if (enemyUnit.currentTeam != unitsRef.currentTeam)
+        Units enemyUnit = other.transform.root.GetComponent<Units>();
+
+        if (enemyUnit != null && unitsRef.currentTeam != enemyUnit.currentTeam)
         {
+            Debug.Log("YourTeam" + unitsRef.currentTeam);
+            Debug.Log("EnemyTeam" + enemyUnit.currentTeam);
+            mainTarget = enemyUnit.gameObject;
             unitsRef.FollowTarget(mainTarget);
         }
     }

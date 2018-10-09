@@ -589,6 +589,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114891946599753232, guid: 1aa3ad345cf106d4498db31426933e54,
+        type: 2}
+      propertyPath: currentTeam
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
   m_IsPrefabParent: 0
@@ -977,6 +982,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &711306382 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1322743572337348, guid: 1aa3ad345cf106d4498db31426933e54,
+    type: 2}
+  m_PrefabInternal: {fileID: 338971282}
+--- !u!54 &711306387
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711306382}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &921978658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1434,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1133392988 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1322743572337348, guid: 1aa3ad345cf106d4498db31426933e54,
+    type: 2}
+  m_PrefabInternal: {fileID: 1500662897}
+--- !u!54 &1133392993
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133392988}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1157676582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,7 +2312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4360085337303472, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 96.7
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 4360085337303472, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2297,6 +2342,16 @@ Prefab:
     - target: {fileID: 1447319048589936, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
       propertyPath: m_Name
       value: Barbarian (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533318357825998, guid: 1aa3ad345cf106d4498db31426933e54,
+        type: 2}
+      propertyPath: currentTeam
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114891946599753232, guid: 1aa3ad345cf106d4498db31426933e54,
+        type: 2}
+      propertyPath: currentTeam
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour {
+public class Movement : MonoBehaviour
+{
 
     [SerializeField]
     private LayerMask clickablesLayer;
@@ -94,14 +95,14 @@ public class Movement : MonoBehaviour {
             {
                 SelectObjects();
             }
-        } 
+        }
     }
 
     void SelectObjects()
     {
         List<GameObject> remObjects = new List<GameObject>();
 
-        if(Input.GetKey("left ctrl") == false)
+        if (Input.GetKey("left ctrl") == false)
         {
             clearSelection();
         }
@@ -112,7 +113,7 @@ public class Movement : MonoBehaviour {
         {
             if (selectObject != null)
             {
-                if(selectionRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
+                if (selectionRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
                 {
                     selectedObjects.Add(selectObject);
                     selectObject.GetComponent<ClickOn>().currentlySelected = true;
