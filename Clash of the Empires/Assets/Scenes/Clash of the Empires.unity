@@ -589,11 +589,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114891946599753232, guid: 1aa3ad345cf106d4498db31426933e54,
-        type: 2}
-      propertyPath: currentTeam
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
   m_IsPrefabParent: 0
@@ -641,11 +636,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 135332148475575074, guid: 4b6b923df42c6e4479310d4776b824c2,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6b923df42c6e4479310d4776b824c2, type: 2}
   m_IsPrefabParent: 0
@@ -692,10 +682,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 60
   panBorderThickness: 10
-  panLimit: {x: 100, y: 100}
+  panLimit: {x: 500, y: 500}
   scrollSpeed: 20
   minY: 1
-  maxY: 1000
+  maxY: 200
   pivotSpeed: 60
 --- !u!1 &624958398
 GameObject:
@@ -982,26 +972,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &711306382 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1322743572337348, guid: 1aa3ad345cf106d4498db31426933e54,
-    type: 2}
-  m_PrefabInternal: {fileID: 338971282}
---- !u!54 &711306387
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 711306382}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &921978658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,11 +2784,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 135219533538793820, guid: 6fe2e765ed990444eaafeeb5a642d6a5,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fe2e765ed990444eaafeeb5a642d6a5, type: 2}
   m_IsPrefabParent: 0
@@ -2967,7 +2932,6 @@ MonoBehaviour:
   selectableObjects: []
   mousePos1: {x: 0, y: 0, z: 0}
   mousePos2: {x: 0, y: 0, z: 0}
-  playerAgent: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512

@@ -16,8 +16,9 @@ public class Movement : MonoBehaviour
     public List<GameObject> selectableObjects;
     public Vector3 mousePos1;
     public Vector3 mousePos2;
-    public NavMeshAgent playerAgent;
+    private NavMeshAgent agent;
     public LayerMask groundLayer;
+    private Units unitsRef;
     Camera cam;
 
 
@@ -34,6 +35,15 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (agent != null)
+        {
+            float dist = agent.remainingDistance;
+            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance - agent.stoppingDistance <= 0)
+            {
+                unitsRef.followTarget = true;
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             foreach (GameObject selectObjects in selectableObjects)
@@ -46,7 +56,11 @@ public class Movement : MonoBehaviour
         {
             foreach (GameObject unit in selectedObjects)
             {
-                unit.GetComponent<NavMeshAgent>().SetDestination(GetPointUnderCursor());
+                unitsRef = unit.GetComponent<Units>();
+                unitsRef.followTarget = false;
+                agent = unit.GetComponent<NavMeshAgent>();
+                agent.speed = 50;
+                agent.SetDestination(GetPointUnderCursor());
             }
         }
 

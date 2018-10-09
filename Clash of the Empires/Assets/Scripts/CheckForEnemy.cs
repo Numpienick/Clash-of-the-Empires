@@ -1,28 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
-public class CheckForEnemy : Units
+public class CheckForEnemy : MonoBehaviour
 {
-    private Barbarian unitsRef;
+    private Units unitsRef;
     public GameObject mainTarget;
 
     // Use this for initialization
     void Awake()
     {
-        unitsRef = transform.root.GetComponent<Barbarian>();
+        unitsRef = transform.root.GetComponent<Units>();
     }
 
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         Units enemyUnit = other.transform.root.GetComponent<Units>();
 
         if (enemyUnit != null && unitsRef.currentTeam != enemyUnit.currentTeam)
         {
-            Debug.Log("YourTeam" + unitsRef.currentTeam);
-            Debug.Log("EnemyTeam" + enemyUnit.currentTeam);
             mainTarget = enemyUnit.gameObject;
-            unitsRef.FollowTarget(mainTarget);
+            unitsRef.followTarget = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        Units enemyUnit = other.transform.root.GetComponent<Units>();
+        if (enemyUnit != null && unitsRef.currentTeam != enemyUnit.currentTeam)
+        {
+            mainTarget = null;
         }
     }
 }
