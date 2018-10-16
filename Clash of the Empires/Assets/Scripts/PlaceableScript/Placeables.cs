@@ -4,24 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Placeables : Player
+public class Placeables : ClashOfTheEmpires
 {
     public float currentHealth = 20f;
     public float maxHealth = 100f;
-    public GameObject barracks;
-    public GameObject goldmine;
-    public GameObject archer;
-    public GameObject barbarian;
-    public GameObject achmed;
-    public GameObject healer;
-    public Player playerRef;
-
-    private MainGrid grid;
-
-    private bool goldmineSelected = false;
-
-    private Movement movementRef;
-
+       
     public Vector3 spawnpoint;
 
     private Transform healthBar;
@@ -31,7 +18,6 @@ public class Placeables : Player
     public Slider healthFill;
 
     public float healthbarOffsetY = 1.13f;
-
 
     public float GetHealthPct()
     {
@@ -46,16 +32,13 @@ public class Placeables : Player
             healthBar = canvas.GetComponent<RectTransform>();
             healthFill = canvas.GetComponentInChildren<Slider>();
         }
-        movementRef = Camera.main.GetComponent<Movement>();
         currentHealth = maxHealth;
-        playerRef = GetComponent<Player>();
-        grid = FindObjectOfType<MainGrid>();
     }
 
     void Update()
     {
 
-        if (goldmineSelected == true && Input.GetMouseButtonDown(1))
+        /*if (goldmineSelected == true && Input.GetMouseButtonDown(1))
         {
             RaycastHit hitInfo;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -69,7 +52,7 @@ public class Placeables : Player
         if (goldmineSelected == true && Input.GetMouseButtonDown(0))
         {
             goldmineSelected = false;
-        }
+        }*/
     }
 
     public void Die()
@@ -78,7 +61,7 @@ public class Placeables : Player
         Destroy(gameObject);
     }
 
-    public void PlaceUnit(int cost, float unitHealth, GameObject unitType)
+    /*public void PlaceUnit(int cost, float unitHealth, GameObject unitType)
     {
         if (playerRef.money - cost >= 0)
         {
@@ -103,11 +86,6 @@ public class Placeables : Player
     {
         PlaceUnit(100, 200, barracks);
         Debug.Log("Unit placed");
-    }
-
-    public void Goldmine()
-    {
-        goldmineSelected = true;
     }
 
     public void Archer()
@@ -136,7 +114,7 @@ public class Placeables : Player
         PlaceUnit(600, 200, healer);
         Instantiate(healer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
         //  Debug.Log("Unit placed");
-    }
+    }*/
 
     public void UpdateHealthBarPosition()
     {

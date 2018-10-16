@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Units : OffensivePlaceables
 {
-    private SphereCollider detectingRange;
     [HideInInspector]
     public NavMeshAgent agent;
     public Collider targetCollider;
@@ -14,7 +13,6 @@ public class Units : OffensivePlaceables
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        detectingRange = GetComponent<SphereCollider>();
         healthbarOffsetY = 6;
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }

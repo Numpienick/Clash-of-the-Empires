@@ -8,7 +8,7 @@ public class OffensivePlaceables : Placeables
     public float visionRange = 0;
     public float shootingRange = 0;
     public float fireRate = 0;
-    Placeables target;
+    private Placeables target;
 
 
 	// Use this for initialization

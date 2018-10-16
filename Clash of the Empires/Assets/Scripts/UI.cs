@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UI : Player {
+public class UI : MonoBehaviour {
 
     protected TextMeshProUGUI moneyCountText;
     public GameObject moneyCount;

@@ -7,6 +7,7 @@ public class ClashOfTheEmpires : MonoBehaviour {
     public int playerCount;
     public int gridSize;
     public int amountOfTeams;
+    public int currentTeam;
 	// Use this for initialization
 	void Start () {
         

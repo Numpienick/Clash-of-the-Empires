@@ -9,13 +9,10 @@ public class Barbarian : OffensivePlaceables
     private void Start()
     {
         unitsRef = GetComponent<Units>();
-        
     }
 
     private void Update()
     {
-        
 
     }
-   
-}
+    }
