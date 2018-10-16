@@ -10,11 +10,11 @@ public class Arrow : MonoBehaviour
 
     public float speed = 10f;
 
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
     void Update()
     {

@@ -29,10 +29,6 @@ public class Movement : MonoBehaviour
         cam = Camera.main;
     }
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         if (agent != null)
