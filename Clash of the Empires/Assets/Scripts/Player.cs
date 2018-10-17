@@ -221,6 +221,7 @@ public class Player : ClashOfTheEmpires
         if (money - cost >= 0)
         {
             money -= cost;
+            Instantiate(unitType, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
         }
         if (money - cost <= 0)
         {
@@ -239,6 +240,7 @@ public class Player : ClashOfTheEmpires
         var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
         goldmine.transform.position = finalPosition;
         PlaceUnit(200, 200, goldmine);
+        Debug.Log(clickPoint +" finalpos: " + finalPosition);
         Instantiate(goldmine, finalPosition, Quaternion.identity);
         goldmineSelected = false;
     }
@@ -251,28 +253,20 @@ public class Player : ClashOfTheEmpires
     public void Archer()
     {
         PlaceUnit(300, 200, archer);
-        Instantiate(archer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        // Debug.Log("Unit placed");
     }
 
     public void Barbarian()
     {
         PlaceUnit(400, 200, barbarian);
-        Instantiate(barbarian, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        // Debug.Log("Unit placed");
     }
 
     public void Achmed()
     {
         PlaceUnit(500, 200, achmed);
-        Instantiate(achmed, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        // Debug.Log("Unit placed");
     }
 
     public void Healer()
     {
         PlaceUnit(600, 200, healer);
-        Instantiate(healer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        //  Debug.Log("Unit placed");
     }
 }
