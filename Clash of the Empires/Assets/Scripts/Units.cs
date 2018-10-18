@@ -10,6 +10,7 @@ public class Units : OffensivePlaceables
     public Collider targetCollider;
     public CheckForEnemy checkForEnemyRef;
     public bool followTarget = true;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -30,6 +31,12 @@ public class Units : OffensivePlaceables
         {
             UpdateHealthBarPosition();
             healthFill.value = currentHealth / maxHealth;
+        }
+        
+
+        if (currentHealth > unitHealth)
+        {
+            currentHealth = maxHealth;
         }
     }
 
