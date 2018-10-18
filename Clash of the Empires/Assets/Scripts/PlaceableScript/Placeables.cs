@@ -8,6 +8,7 @@ public class Placeables : ClashOfTheEmpires
 {
     public float currentHealth = 20f;
     public float maxHealth = 100f;
+    public float unitHealth = 100f;
        
     public Vector3 spawnpoint;
 
@@ -37,6 +38,7 @@ public class Placeables : ClashOfTheEmpires
 
     void Update()
     {
+
 
         /*if (goldmineSelected == true && Input.GetMouseButtonDown(1))
         {
