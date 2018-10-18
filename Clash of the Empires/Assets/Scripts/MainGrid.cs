@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainGrid : MonoBehaviour {
-
+public class MainGrid : MonoBehaviour
+{
     [SerializeField]
     private float size = 1f;
+
+    [HideInInspector]
+    public bool spawn;
+
+    private Player player;
+
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
@@ -22,10 +32,23 @@ public class MainGrid : MonoBehaviour {
 
         result += transform.position;
 
+        int layerMask = 1 << 9;
+       Collider[] intersecting = Physics.OverlapSphere(result, 0.01f, layerMask);
+        if (intersecting.Length == 0)
+        {
+            Debug.Log("You can spawn");
+            spawn = true;
+        }
+        else
+        {
+            Debug.Log("You can't spawn" + result + intersecting[0]);
+            spawn = false;
+        }
+
         return result;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         for (float x = 0; x < 40; x += size)
@@ -37,5 +60,5 @@ public class MainGrid : MonoBehaviour {
             }
 
         }
-    }
+    }*/
 }

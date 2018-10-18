@@ -35,6 +35,8 @@ public class Player : ClashOfTheEmpires
     public LayerMask groundLayer;
     private Units unitsRef;
 
+    public Vector3 finalPosition;
+
 
     // Use this for initialization
     void Start()
@@ -50,82 +52,6 @@ public class Player : ClashOfTheEmpires
     // Update is called once per frame
     void Update()
     {
-        /*if (agent != null)
-        {
-            float dist = agent.remainingDistance;
-            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance - agent.stoppingDistance <= 0)
-            {
-                unitsRef.followTarget = true;
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            foreach (GameObject selectObjects in selectableObjects)
-            {
-                clearSelection();
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            foreach (GameObject unit in selectedObjects)
-            {
-                unitsRef = unit.GetComponent<Units>();
-                unitsRef.followTarget = false;
-                agent = unit.GetComponent<NavMeshAgent>();
-                agent.speed = 50;
-                agent.SetDestination(GetPointUnderCursor());
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            mousePos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-
-            RaycastHit rayHit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayHit, Mathf.Infinity, clickablesLayer))
-            {
-                ClickOn clickOnScript = rayHit.collider.GetComponent<ClickOn>();
-
-                if (Input.GetKey("left ctrl"))
-                {
-                    if (clickOnScript.currentlySelected == false)
-                    {
-                        selectedObjects.Add(rayHit.collider.gameObject);
-                        clickOnScript.currentlySelected = true;
-                        clickOnScript.ClickMe();
-                    }
-                    else
-                    {
-                        selectedObjects.Remove(rayHit.collider.gameObject);
-                        clickOnScript.currentlySelected = false;
-                        clickOnScript.ClickMe();
-                    }
-                }
-                else
-                {
-                    clearSelection();
-
-                    selectedObjects.Add(rayHit.collider.gameObject);
-                    clickOnScript.currentlySelected = true;
-                    clickOnScript.ClickMe();
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            mousePos2 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-            if (mousePos1 != mousePos2)
-            {
-                SelectObjects();
-            }
-        }*/
-
         if (Input.GetKeyDown("m"))
         {
             money += 1000;
@@ -237,12 +163,15 @@ public class Player : ClashOfTheEmpires
 
     public void goldMine(Vector3 clickPoint)
     {
-        var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        goldmine.transform.position = finalPosition;
-        PlaceUnit(200, 200, goldmine);
-        Debug.Log(clickPoint +" finalpos: " + finalPosition);
-        Instantiate(goldmine, finalPosition, Quaternion.identity);
-        goldmineSelected = false;
+        finalPosition = grid.GetNearestPointOnGrid(clickPoint);
+        if (money - 200 >= 0 && grid.spawn)
+        {
+            goldmine.transform.position = finalPosition;
+            money -= 200;
+            //Debug.Log(clickPoint + " finalpos: " + finalPosition);
+            Instantiate(goldmine, finalPosition, Quaternion.identity);
+            goldmineSelected = false;
+        }
     }
 
     public void GoldMineSelected()
@@ -269,4 +198,16 @@ public class Player : ClashOfTheEmpires
     {
         PlaceUnit(600, 200, healer);
     }
+    public void SpawnGoldMine()
+    {
+        if (money - 200 >= 0)
+        {
+            goldmine.transform.position = finalPosition;
+            money -= 200;
+            //Debug.Log(clickPoint + " finalpos: " + finalPosition);
+            Instantiate(goldmine, finalPosition, Quaternion.identity);
+            goldmineSelected = false;
+        }
+    }
+
 }
