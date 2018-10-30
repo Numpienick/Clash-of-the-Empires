@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Player : ClashOfTheEmpires
 {
+    public static bool gameIsPaused = false;
+
+    public GameObject pauseMenuUI;
+
     public GameObject enemy;
     public int money = 1000;
 
@@ -52,6 +57,18 @@ public class Player : ClashOfTheEmpires
     // Update is called once per frame
     void Update()
     {
+        //Pause Menu functionality
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
         if (Input.GetKeyDown("m"))
         {
             money += 1000;
@@ -208,6 +225,32 @@ public class Player : ClashOfTheEmpires
             Instantiate(goldmine, finalPosition, Quaternion.identity);
             goldmineSelected = false;
         }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
+    void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting Game");
+        Application.Quit();
     }
 
 }

@@ -8,6 +8,7 @@ public class Placeables : ClashOfTheEmpires
 {
     public float currentHealth = 20f;
     public float maxHealth = 100f;
+    public float unitHealth;
 
     public Vector3 spawnpoint;
 
