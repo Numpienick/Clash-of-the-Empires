@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : ClashOfTheEmpires
 {
-    public static bool gameIsPaused = false;
+    [HideInInspector]
+    public bool gameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
@@ -46,7 +47,6 @@ public class Player : ClashOfTheEmpires
     // Use this for initialization
     void Start()
     {
-
         selectedObjects = new List<GameObject>();
         selectableObjects = new List<GameObject>();
         cam = Camera.main;
@@ -62,6 +62,7 @@ public class Player : ClashOfTheEmpires
         {
             if (gameIsPaused)
             {
+                
                 Resume();
             }
             else
@@ -69,6 +70,7 @@ public class Player : ClashOfTheEmpires
                 Pause();
             }
         }
+
         if (Input.GetKeyDown("m"))
         {
             money += 1000;

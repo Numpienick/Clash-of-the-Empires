@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - Placeables
   - Enemy
+  - SelectBox
   layers:
   - Default
   - TransparentFX

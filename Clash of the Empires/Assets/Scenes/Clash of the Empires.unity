@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 972059451}
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   gridSize: 0
   amountOfTeams: 0
   currentTeam: 1
+  gameIsPaused: 0
   pauseMenuUI: {fileID: 1584984522}
   enemy: {fileID: 0}
   money: 10000
@@ -1792,7 +1793,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 972059451}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -2197,7 +2198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 972059451}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -2585,11 +2586,11 @@ GameObject:
   - component: {fileID: 1450570009}
   m_Layer: 5
   m_Name: Selectbox
-  m_TagString: Untagged
+  m_TagString: SelectBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1450570008
 RectTransform:
   m_ObjectHideFlags: 0
