@@ -5,12 +5,10 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
-
     [SerializeField]
     private LayerMask clickablesLayer;
 
     public List<GameObject> selectedObjects;
-
 
     [HideInInspector]
     public List<GameObject> selectableObjects;

@@ -2,58 +2,75 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectBox : MonoBehaviour {
+public class SelectBox : MonoBehaviour
+{
 
     [SerializeField]
     private RectTransform selectSquireImage;
 
+    private GameObject gameObjectRef;
+
     Vector3 startPos;
     Vector3 endPos;
 
-	// Use this for initialization
-	void Start () {
+    private Player player;
+
+    // Use this for initialization
+    void Start()
+    {
+        gameObjectRef = GameObject.FindGameObjectWithTag("SelectBox");
         selectSquireImage.gameObject.SetActive(false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
+        player = FindObjectOfType<Player>();
+    }
 
-            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
-            {
-                startPos = Input.mousePosition;
-            }
+    // Update is called once per frame
+    void Update()
+    {
+        if (player.gameIsPaused && gameObjectRef.activeSelf == true)
+        {
+            gameObjectRef.SetActive(false);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (!player.gameIsPaused)
         {
-            selectSquireImage.gameObject.SetActive(false);
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            if (!selectSquireImage.gameObject.activeInHierarchy)
+            if (Input.GetMouseButtonDown(0))
             {
-                selectSquireImage.gameObject.SetActive(true);
+                RaycastHit hit;
+
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+                {
+                    startPos = Input.mousePosition;
+                }
             }
 
-            endPos = Input.mousePosition;
+            if (Input.GetMouseButtonUp(0))
+            {
+                selectSquireImage.gameObject.SetActive(false);
+            }
 
-            Vector3 squareStart = startPos;
+            if (Input.GetMouseButton(0))
+            {
+                if (!selectSquireImage.gameObject.activeInHierarchy)
+                {
+                    selectSquireImage.gameObject.SetActive(true);
+                }
 
-            squareStart.z = 0f;
+                endPos = Input.mousePosition;
 
-            Vector3 center = (squareStart + endPos) / 2f;
+                Vector3 squareStart = startPos;
 
-            selectSquireImage.position = center;
+                squareStart.z = 0f;
 
-            float sizeX = Mathf.Abs(squareStart.x - endPos.x);
-            float sizeY = Mathf.Abs(squareStart.y - endPos.y);
+                Vector3 center = (squareStart + endPos) / 2f;
 
-            selectSquireImage.sizeDelta = new Vector2(sizeX, sizeY);
+                selectSquireImage.position = center;
+
+                float sizeX = Mathf.Abs(squareStart.x - endPos.x);
+                float sizeY = Mathf.Abs(squareStart.y - endPos.y);
+
+                selectSquireImage.sizeDelta = new Vector2(sizeX, sizeY);
+            }
+
         }
-
-	}
+    }
 }

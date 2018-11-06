@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Player : ClashOfTheEmpires
 {
+    [HideInInspector]
+    public bool gameIsPaused = false;
+
+    public GameObject pauseMenuUI;
+
     public GameObject enemy;
     public int money = 1000;
 
@@ -35,11 +41,12 @@ public class Player : ClashOfTheEmpires
     public LayerMask groundLayer;
     private Units unitsRef;
 
+    public Vector3 finalPosition;
+
 
     // Use this for initialization
     void Start()
     {
-
         selectedObjects = new List<GameObject>();
         selectableObjects = new List<GameObject>();
         cam = Camera.main;
@@ -50,81 +57,19 @@ public class Player : ClashOfTheEmpires
     // Update is called once per frame
     void Update()
     {
-        /*if (agent != null)
+        //Pause Menu functionality
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            float dist = agent.remainingDistance;
-            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance - agent.stoppingDistance <= 0)
+            if (gameIsPaused)
             {
-                unitsRef.followTarget = true;
+                
+                Resume();
+            }
+            else
+            {
+                Pause();
             }
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            foreach (GameObject selectObjects in selectableObjects)
-            {
-                clearSelection();
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            foreach (GameObject unit in selectedObjects)
-            {
-                unitsRef = unit.GetComponent<Units>();
-                unitsRef.followTarget = false;
-                agent = unit.GetComponent<NavMeshAgent>();
-                agent.speed = 50;
-                agent.SetDestination(GetPointUnderCursor());
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            mousePos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-
-            RaycastHit rayHit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayHit, Mathf.Infinity, clickablesLayer))
-            {
-                ClickOn clickOnScript = rayHit.collider.GetComponent<ClickOn>();
-
-                if (Input.GetKey("left ctrl"))
-                {
-                    if (clickOnScript.currentlySelected == false)
-                    {
-                        selectedObjects.Add(rayHit.collider.gameObject);
-                        clickOnScript.currentlySelected = true;
-                        clickOnScript.ClickMe();
-                    }
-                    else
-                    {
-                        selectedObjects.Remove(rayHit.collider.gameObject);
-                        clickOnScript.currentlySelected = false;
-                        clickOnScript.ClickMe();
-                    }
-                }
-                else
-                {
-                    clearSelection();
-
-                    selectedObjects.Add(rayHit.collider.gameObject);
-                    clickOnScript.currentlySelected = true;
-                    clickOnScript.ClickMe();
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            mousePos2 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-            if (mousePos1 != mousePos2)
-            {
-                SelectObjects();
-            }
-        }*/
 
         if (Input.GetKeyDown("m"))
         {
@@ -221,6 +166,7 @@ public class Player : ClashOfTheEmpires
         if (money - cost >= 0)
         {
             money -= cost;
+            Instantiate(unitType, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
         }
         if (money - cost <= 0)
         {
@@ -236,11 +182,15 @@ public class Player : ClashOfTheEmpires
 
     public void goldMine(Vector3 clickPoint)
     {
-        var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        goldmine.transform.position = finalPosition;
-        PlaceUnit(200, 200, goldmine);
-        Instantiate(goldmine, finalPosition, Quaternion.identity);
-        goldmineSelected = false;
+        finalPosition = grid.GetNearestPointOnGrid(clickPoint);
+        if (money - 200 >= 0 && grid.spawn)
+        {
+            goldmine.transform.position = finalPosition;
+            money -= 200;
+            //Debug.Log(clickPoint + " finalpos: " + finalPosition);
+            Instantiate(goldmine, finalPosition, Quaternion.identity);
+            goldmineSelected = false;
+        }
     }
 
     public void GoldMineSelected()
@@ -251,28 +201,58 @@ public class Player : ClashOfTheEmpires
     public void Archer()
     {
         PlaceUnit(300, 200, archer);
-        Instantiate(archer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        // Debug.Log("Unit placed");
     }
 
     public void Barbarian()
     {
         PlaceUnit(400, 200, barbarian);
-        Instantiate(barbarian, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        // Debug.Log("Unit placed");
     }
 
     public void Achmed()
     {
         PlaceUnit(500, 200, achmed);
-        Instantiate(achmed, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        // Debug.Log("Unit placed");
     }
 
     public void Healer()
     {
         PlaceUnit(600, 200, healer);
-        Instantiate(healer, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
-        //  Debug.Log("Unit placed");
     }
+    public void SpawnGoldMine()
+    {
+        if (money - 200 >= 0)
+        {
+            goldmine.transform.position = finalPosition;
+            money -= 200;
+            //Debug.Log(clickPoint + " finalpos: " + finalPosition);
+            Instantiate(goldmine, finalPosition, Quaternion.identity);
+            goldmineSelected = false;
+        }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
+    void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting Game");
+        Application.Quit();
+    }
+
 }
