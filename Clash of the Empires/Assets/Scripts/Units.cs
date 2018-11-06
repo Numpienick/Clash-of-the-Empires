@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Units : OffensivePlaceables
 {
-    [HideInInspector]
+    /*[HideInInspector]
     public NavMeshAgent agent;
     public Collider targetCollider;
     public CheckForEnemy checkForEnemyRef;
@@ -65,5 +65,5 @@ public class Units : OffensivePlaceables
                 this.GetComponent<NavMeshAgent>().speed = 30;
             }
         }
-    }
+    }*/
 }

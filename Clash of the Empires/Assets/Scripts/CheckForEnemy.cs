@@ -5,30 +5,30 @@ using UnityEngine;
 
 public class CheckForEnemy : MonoBehaviour
 {
-    private Units unitsRef;
+    private OffensivePlaceables offensivePlaceablesRef;
     public GameObject mainTarget;
 
     // Use this for initialization
     void Awake()
     {
-        unitsRef = transform.root.GetComponent<Units>();
+        offensivePlaceablesRef = transform.root.GetComponent<OffensivePlaceables>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        Units enemyUnit = other.transform.root.GetComponent<Units>();
+        OffensivePlaceables enemyUnit = other.transform.root.GetComponent<OffensivePlaceables>();
 
-        if (enemyUnit != null && unitsRef.currentTeam != enemyUnit.currentTeam)
+        if (enemyUnit != null && offensivePlaceablesRef.currentTeam != enemyUnit.currentTeam)
         {
             mainTarget = enemyUnit.gameObject;
-            unitsRef.followTarget = true;
+            offensivePlaceablesRef.followTarget = true;
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
         Units enemyUnit = other.transform.root.GetComponent<Units>();
-        if (enemyUnit != null && unitsRef.currentTeam != enemyUnit.currentTeam)
+        if (enemyUnit != null && offensivePlaceablesRef.currentTeam != enemyUnit.currentTeam)
         {
             mainTarget = null;
         }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-
     private Vector3 velocity;
     private float gravity = 9.8f;
 
