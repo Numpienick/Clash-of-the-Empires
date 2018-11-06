@@ -636,6 +636,37 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114615279803230404, guid: 4b6b923df42c6e4479310d4776b824c2,
+        type: 2}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615279803230404, guid: 4b6b923df42c6e4479310d4776b824c2,
+        type: 2}
+      propertyPath: visionRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615279803230404, guid: 4b6b923df42c6e4479310d4776b824c2,
+        type: 2}
+      propertyPath: shootingRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615279803230404, guid: 4b6b923df42c6e4479310d4776b824c2,
+        type: 2}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615279803230404, guid: 4b6b923df42c6e4479310d4776b824c2,
+        type: 2}
+      propertyPath: Detonate
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b2561bb7b0bbc048bfa1c202fb110df, type: 3}
+    - target: {fileID: 114615279803230404, guid: 4b6b923df42c6e4479310d4776b824c2,
+        type: 2}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 1717269929758762, guid: 0f23612fc39330b4292e9bc78a2bf296,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b6b923df42c6e4479310d4776b824c2, type: 2}
   m_IsPrefabParent: 0
@@ -900,12 +931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082621a401696974ea9ebeaeb919151c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 0
-  gridSize: 0
-  amountOfTeams: 0
-  currentTeam: 1
-  enemy: {fileID: 0}
-  money: 1000
   moneyCount: {fileID: 216665341}
 --- !u!1 &687823811
 GameObject:
@@ -1034,6 +1059,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &925274242 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1310302097904350, guid: 4b6b923df42c6e4479310d4776b824c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 433081963}
+--- !u!82 &925274250
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925274242}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &939286143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,6 +1272,23 @@ MonoBehaviour:
   currentTeam: 1
   enemy: {fileID: 0}
   money: 10000
+  barracks: {fileID: 0}
+  goldmine: {fileID: 0}
+  archer: {fileID: 0}
+  barbarian: {fileID: 0}
+  achmed: {fileID: 0}
+  healer: {fileID: 0}
+  selectableObjects: []
+  selectedObjects: []
+  clickablesLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  cam: {fileID: 0}
+  mousePos1: {x: 0, y: 0, z: 0}
+  mousePos2: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &972059452
 Transform:
   m_ObjectHideFlags: 0
@@ -1192,17 +1319,8 @@ MonoBehaviour:
   gridSize: 0
   amountOfTeams: 0
   currentTeam: 1
-  enemy: {fileID: 0}
-  money: 1000
   currentHealth: 20
   maxHealth: 100
-  barracks: {fileID: 0}
-  goldmine: {fileID: 1371746884821576, guid: 59f1f963e16a1b64784943b447e76eb5, type: 2}
-  archer: {fileID: 1712396746432380, guid: 74418722e637edc42af3401552759abe, type: 2}
-  barbarian: {fileID: 1447319048589936, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
-  achmed: {fileID: 1310302097904350, guid: 4b6b923df42c6e4479310d4776b824c2, type: 2}
-  healer: {fileID: 1883706575900234, guid: 6fe2e765ed990444eaafeeb5a642d6a5, type: 2}
-  playerRef: {fileID: 0}
   spawnpoint: {x: 0, y: 0, z: 0}
   canvas: {fileID: 0}
   healthFill: {fileID: 0}
