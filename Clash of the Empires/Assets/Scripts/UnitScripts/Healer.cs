@@ -17,11 +17,13 @@ public class Healer : OffensivePlaceables
         Debug.Log("healing...");
 
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
+        Placeables unit = other.transform.root.GetComponent<Placeables>();
         if (currentHealth < 100)
         {
-            
+
+            Debug.Log("healing...");
         }
     }
 }
