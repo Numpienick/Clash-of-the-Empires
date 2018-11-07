@@ -7,7 +7,12 @@ public class Archer : OffensivePlaceables
     public GameObject Bullet;
     public GameObject Bullet_Emitter;
 
-    public void Update()
+    void Start()
+    {
+        checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
+    }
+
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {

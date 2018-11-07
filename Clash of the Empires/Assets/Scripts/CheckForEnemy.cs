@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CheckForEnemy : MonoBehaviour
 {
-    private OffensivePlaceables offensivePlaceablesRef;
+    public OffensivePlaceables offensivePlaceablesRef;
     public GameObject mainTarget;
 
     // Use this for initialization
@@ -27,7 +27,7 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        Units enemyUnit = other.transform.root.GetComponent<Units>();
+        OffensivePlaceables enemyUnit = other.transform.root.GetComponent<OffensivePlaceables>();
         if (enemyUnit != null && offensivePlaceablesRef.currentTeam != enemyUnit.currentTeam)
         {
             mainTarget = null;

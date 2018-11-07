@@ -15,13 +15,11 @@ public class OffensivePlaceables : Placeables
     public float visionRange = 0;
     public float shootingRange = 0;
     public float fireRate = 0;
-    public Placeables target;
 
     // Use this for initialization
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        healthbarOffsetY = 6;
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }
 
@@ -32,21 +30,9 @@ public class OffensivePlaceables : Placeables
 
         if (Input.GetKeyDown(KeyCode.X))
             DealDamage(6);
-
-        if (canvas != null)
-        {
-            UpdateHealthBarPosition();
-            healthFill.value = currentHealth / maxHealth;
-        }
-
-
-        if (currentHealth > unitHealth)
-        {
-            currentHealth = maxHealth;
-        }
     }
 
-    void DealDamage(float damageValue)
+    public void DealDamage(float damageValue)
     {
         currentHealth -= damageValue;
         Debug.Log("ouch");

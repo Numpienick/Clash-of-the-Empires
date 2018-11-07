@@ -5,13 +5,12 @@ using UnityEngine.AI;
 
 public class Barbarian : OffensivePlaceables
 {
-    private Units unitsRef;
-    private void Start()
+    void Start()
     {
-        unitsRef = GetComponent<Units>();
+        //checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }
 
-    private void Update()
+    void Update()
     {
 
     }
