@@ -307,3 +307,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/Clash of the Empires/Assets/Scenes/local.meta
+/Clash of the Empires/Assets/Scenes/local.unity
+/Clash of the Empires/Assets/Scenes/local.unity.meta

@@ -10,14 +10,16 @@ public class Achmed : OffensivePlaceables
     public bool isExploding = false;
     AudioSource source;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
         source = GetComponent<AudioSource>();
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
         targetCheck();
     }
     void targetCheck()

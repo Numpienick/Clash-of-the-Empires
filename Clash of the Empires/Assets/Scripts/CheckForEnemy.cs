@@ -18,10 +18,13 @@ public class CheckForEnemy : MonoBehaviour
     {
         OffensivePlaceables enemyUnit = other.transform.root.GetComponent<OffensivePlaceables>();
 
+        Debug.Log(enemyUnit);
+
         if (enemyUnit != null && offensivePlaceablesRef.currentTeam != enemyUnit.currentTeam)
         {
             mainTarget = enemyUnit.gameObject;
             offensivePlaceablesRef.followTarget = true;
+            offensivePlaceablesRef.target = mainTarget;            
         }
     }
 

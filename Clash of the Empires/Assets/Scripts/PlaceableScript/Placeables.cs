@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
-public class Placeables : ClashOfTheEmpires
+public class Placeables : MonoBehaviour
 {
+    public int currentTeam;
     public float currentHealth = 20f;
     public float maxHealth = 100f;
     public float unitHealth;
@@ -20,25 +21,33 @@ public class Placeables : ClashOfTheEmpires
 
     private float healthbarOffsetY = 1.13f;
 
+    public NavMeshAgent agent;
+    public CheckForEnemy checkForEnemyRef;
+
     public float GetHealthPct()
     {
         return currentHealth / maxHealth;
     }
 
-    void Awake()
+    public virtual void Awake()
     {
+        Debug.Log("WAKE UP HEALTHBAR OFFSET");
         healthbarOffsetY = 6;
+        currentHealth = maxHealth;
+    }
+
+    public virtual void Start()
+    {
+        Debug.Log("start placable:" + name);
         canvas = GetComponentInChildren<Canvas>();
-        Debug.Log(canvas);
         if (canvas != null)
         {
             healthBar = canvas.GetComponent<RectTransform>();
             healthFill = canvas.GetComponentInChildren<Slider>();
-        }
-        currentHealth = maxHealth;
+        }        
     }
 
-    private void LateUpdate()
+    public virtual void Update()
     {
         if (canvas != null)
         {

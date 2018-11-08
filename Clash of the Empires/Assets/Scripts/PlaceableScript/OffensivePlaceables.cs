@@ -5,10 +5,7 @@ using UnityEngine.AI;
 
 public class OffensivePlaceables : Placeables
 {
-    [HideInInspector]
-    public NavMeshAgent agent;
     public Collider targetCollider;
-    public CheckForEnemy checkForEnemyRef;
     public bool followTarget = true;
 
     public float damage = 0;
@@ -16,17 +13,28 @@ public class OffensivePlaceables : Placeables
     public float shootingRange = 0;
     public float fireRate = 0;
 
+    [HideInInspector]
+    public GameObject target;
+
     // Use this for initialization
-    void Start()
+    public override void Awake()
     {
+        base.Awake();
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        Debug.Log("start offensive:" + name);
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (followTarget)
-            FollowTarget(checkForEnemyRef.mainTarget);
+            FollowTarget(target);
 
         if (Input.GetKeyDown(KeyCode.X))
             DealDamage(6);

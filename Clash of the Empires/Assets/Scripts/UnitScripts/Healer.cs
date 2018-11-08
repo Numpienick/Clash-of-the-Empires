@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Healer : OffensivePlaceables
 {
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (Input.GetKeyDown(KeyCode.G))
             DealDamage(6);
     }
