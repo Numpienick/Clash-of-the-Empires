@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Achmed : OffensivePlaceables
 {
-
     public AudioClip Detonate;
     public GameObject explosion;
     public bool inDetonateRange = false;
-    private CheckForEnemy checkForEnemyRef;
     public bool isExploding = false;
     AudioSource source;
 
-    private void Start()
+    void Start()
     {
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
-        source = GetComponent<AudioSource> ();
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,10 +28,10 @@ public class Achmed : OffensivePlaceables
             float distance = Vector3.Distance(target.transform.position, this.transform.position);
             if (distance < 75)
             {
-                
+
                 inDetonateRange = true;
             }
-            if (target.GetComponent<Units>().currentTeam != this.currentTeam && inDetonateRange == true)
+            if (target.GetComponent<OffensivePlaceables>().currentTeam != this.currentTeam && inDetonateRange == true)
             {
                 StartCoroutine(explode());
                 isExploding = true;

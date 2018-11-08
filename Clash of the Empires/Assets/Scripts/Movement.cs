@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     public Vector3 mousePos2;
     private NavMeshAgent agent;
     public LayerMask groundLayer;
-    private Units unitsRef;
+    public OffensivePlaceables offensivePlaceablesRef;
     Camera cam;
 
 
@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
             float dist = agent.remainingDistance;
             if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance - agent.stoppingDistance <= 0)
             {
-                unitsRef.followTarget = true;
+                offensivePlaceablesRef.followTarget = true;
             }
         }
 
@@ -50,8 +50,8 @@ public class Movement : MonoBehaviour
         {
             foreach (GameObject unit in selectedObjects)
             {
-                unitsRef = unit.GetComponent<Units>();
-                unitsRef.followTarget = false;
+                offensivePlaceablesRef = unit.GetComponent<OffensivePlaceables>();
+                offensivePlaceablesRef.followTarget = false;
                 agent = unit.GetComponent<NavMeshAgent>();
                 agent.speed = 50;
                 agent.SetDestination(GetPointUnderCursor());

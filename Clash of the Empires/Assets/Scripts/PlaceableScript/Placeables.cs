@@ -13,12 +13,12 @@ public class Placeables : ClashOfTheEmpires
     public Vector3 spawnpoint;
 
     private Transform healthBar;
-    [HideInInspector]
+    //[HideInInspector]
     public Canvas canvas;
-    [HideInInspector]
+    // [HideInInspector]
     public Slider healthFill;
 
-    public float healthbarOffsetY = 1.13f;
+    private float healthbarOffsetY = 1.13f;
 
     public float GetHealthPct()
     {
@@ -27,7 +27,9 @@ public class Placeables : ClashOfTheEmpires
 
     void Awake()
     {
+        healthbarOffsetY = 6;
         canvas = GetComponentInChildren<Canvas>();
+        Debug.Log(canvas);
         if (canvas != null)
         {
             healthBar = canvas.GetComponent<RectTransform>();
@@ -36,9 +38,18 @@ public class Placeables : ClashOfTheEmpires
         currentHealth = maxHealth;
     }
 
-    void Update()
+    private void LateUpdate()
     {
+        if (canvas != null)
+        {
+            UpdateHealthBarPosition();
+            healthFill.value = currentHealth / maxHealth;
+        }
 
+        if (currentHealth > unitHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     public void Die()
@@ -47,7 +58,7 @@ public class Placeables : ClashOfTheEmpires
         Destroy(gameObject);
     }
 
-    public void UpdateHealthBarPosition()
+    private void UpdateHealthBarPosition()
     {
         if (canvas != null)
         {
@@ -57,5 +68,4 @@ public class Placeables : ClashOfTheEmpires
             healthBar.LookAt(Camera.main.transform);
         }
     }
-
 }

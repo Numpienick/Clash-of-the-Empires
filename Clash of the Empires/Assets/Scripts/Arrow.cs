@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-
-    private Vector3 velocity = new Vector3(0, 1, 10);
+    private Vector3 velocity;
     private float gravity = 9.8f;
 
-    public float speed = 10f;
-
-    //private Rigidbody rb;
+    public GameObject bulletEmitter;
 
     private void Start()
     {
-        //rb = GetComponent<Rigidbody>();
+        velocity = new Vector3(0, 1, 20);
     }
     void Update()
     {
         velocity.y -= gravity * Time.deltaTime;
-        transform.position += velocity * Time.deltaTime * speed;
-
+        transform.Translate(velocity * Time.deltaTime * gravity);
     }
 
     private void OnTriggerEnter(Collider other)

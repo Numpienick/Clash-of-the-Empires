@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class Healer : OffensivePlaceables
 {
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
             DealDamage(6);
-       
-
     }
-    void DealDamage(float damageValue)
+    void Heal(float healValue)
     {
-        GetComponent<Units>().currentHealth += damageValue;
+        GetComponent<OffensivePlaceables>().currentHealth += healValue;
         Debug.Log("healing...");
 
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
+        Placeables unit = other.transform.root.GetComponent<Placeables>();
         if (currentHealth < 100)
         {
-            
+
+            Debug.Log("healing...");
         }
     }
 }
