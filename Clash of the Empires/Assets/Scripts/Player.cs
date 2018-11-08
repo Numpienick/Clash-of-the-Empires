@@ -39,7 +39,6 @@ public class Player : ClashOfTheEmpires
     public Vector3 mousePos2;
     private NavMeshAgent agent;
     public LayerMask groundLayer;
-    private Units unitsRef;
 
     public Vector3 finalPosition;
 
@@ -166,7 +165,7 @@ public class Player : ClashOfTheEmpires
         if (money - cost >= 0)
         {
             money -= cost;
-            Instantiate(unitType, new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50)), Quaternion.identity);
+            Instantiate(unitType, new Vector3(Random.Range(-390, -490), 0, Random.Range(-470, -370)), Quaternion.identity);
         }
         if (money - cost <= 0)
         {

@@ -10,4 +10,7 @@ EditorBuildSettings:
     guid: a2f5ab7bff6d511459966a6aaaec3749
   - enabled: 1
     path: Assets/Scenes/Clash of the Empires.unity
+    guid: e4324108559eb6e4288847f8dbbc534c
+  - enabled: 0
+    path: Assets/Scenes/local.unity
     guid: 03567d4dee8cf7540a89ee6a1ea316a8
