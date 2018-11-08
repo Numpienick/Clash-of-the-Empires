@@ -28,7 +28,7 @@ public class Achmed : OffensivePlaceables
         if (target != null && isExploding == false)
         {
             float distance = Vector3.Distance(target.transform.position, this.transform.position);
-            if (distance < 10)
+            if (distance < 75)
             {
 
                 inDetonateRange = true;
