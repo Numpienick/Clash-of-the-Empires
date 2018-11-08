@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Achmed : OffensivePlaceables
 {
-    public AudioClip Detonate;
+    public AudioClip detonate;
     public GameObject explosion;
     public bool inDetonateRange = false;
     public bool isExploding = false;
@@ -13,43 +13,38 @@ public class Achmed : OffensivePlaceables
     public override void Start()
     {
         base.Start();
-        checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
+        //checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
         source = GetComponent<AudioSource>();
     }
 
     public override void Update()
     {
         base.Update();
-        targetCheck();
+        TargetCheck();
     }
-    void targetCheck()
+    void TargetCheck()
     {
-        GameObject target = checkForEnemyRef.mainTarget;
+        //GameObject target = checkForEnemyRef.mainTarget;
         if (target != null && isExploding == false)
         {
             float distance = Vector3.Distance(target.transform.position, this.transform.position);
             if (distance < 75)
             {
-
                 inDetonateRange = true;
             }
             if (target.GetComponent<OffensivePlaceables>().currentTeam != this.currentTeam && inDetonateRange == true)
             {
-                StartCoroutine(explode());
+                StartCoroutine(Explode());
                 isExploding = true;
             }
         }
     }
 
-    IEnumerator explode()
+    IEnumerator Explode()
     {
-        source.PlayOneShot(Detonate);
+        source.PlayOneShot(detonate);
         yield return new WaitForSeconds(1.5f);
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
-
-
-
-
 }

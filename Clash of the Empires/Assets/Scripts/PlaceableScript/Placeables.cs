@@ -31,14 +31,12 @@ public class Placeables : MonoBehaviour
 
     public virtual void Awake()
     {
-        Debug.Log("WAKE UP HEALTHBAR OFFSET");
         healthbarOffsetY = 6;
         currentHealth = maxHealth;
     }
 
     public virtual void Start()
     {
-        Debug.Log("start placable:" + name);
         canvas = GetComponentInChildren<Canvas>();
         if (canvas != null)
         {

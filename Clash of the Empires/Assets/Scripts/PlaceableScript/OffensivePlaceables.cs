@@ -26,7 +26,6 @@ public class OffensivePlaceables : Placeables
     public override void Start()
     {
         base.Start();
-        Debug.Log("start offensive:" + name);
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }
 
