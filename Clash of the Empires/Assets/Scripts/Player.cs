@@ -182,12 +182,10 @@ public class Player : ClashOfTheEmpires
     public void goldMine(Vector3 clickPoint)
     {
         finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        Debug.Log(finalPosition + "Clickpoint:" + clickPoint);
         if (money - 200 >= 0 && grid.spawn)
         {
             goldmine.transform.position = finalPosition;
             money -= 200;
-            //Debug.Log(clickPoint + " finalpos: " + finalPosition);
             Instantiate(goldmine, finalPosition, Quaternion.identity);
             goldmineSelected = false;
         }

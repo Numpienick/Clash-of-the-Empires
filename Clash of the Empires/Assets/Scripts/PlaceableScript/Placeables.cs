@@ -14,9 +14,9 @@ public class Placeables : MonoBehaviour
     public Vector3 spawnpoint;
 
     private Transform healthBar;
-    //[HideInInspector]
+    [HideInInspector]
     public Canvas canvas;
-    // [HideInInspector]
+    [HideInInspector]
     public Slider healthFill;
 
     private float healthbarOffsetY = 1.13f;
