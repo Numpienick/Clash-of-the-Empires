@@ -61,7 +61,7 @@ public class Player : ClashOfTheEmpires
         {
             if (gameIsPaused)
             {
-                
+
                 Resume();
             }
             else
@@ -182,6 +182,7 @@ public class Player : ClashOfTheEmpires
     public void goldMine(Vector3 clickPoint)
     {
         finalPosition = grid.GetNearestPointOnGrid(clickPoint);
+        Debug.Log(finalPosition + "Clickpoint:" + clickPoint);
         if (money - 200 >= 0 && grid.spawn)
         {
             goldmine.transform.position = finalPosition;
