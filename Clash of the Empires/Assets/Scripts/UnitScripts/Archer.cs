@@ -10,21 +10,27 @@ public class Archer : OffensivePlaceables
     public override void Start()
     {
         base.Start();
+        damage = 20f;
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }
 
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.H))
+        if (checkForEnemyRef.readyToShoot == true && followTarget == true && Time.time >= nextTimeToFire)
         {
+            nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
     }
     public void Shoot()
     {
         GameObject Temporary_Bullet_Handler;
-        Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+
+        if (checkForEnemyRef.mainTarget != null)
+            Bullet_Emitter.transform.LookAt(checkForEnemyRef.mainTarget.transform);
+
+        Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation, transform) as GameObject;
         Destroy(Temporary_Bullet_Handler, 10.0f);
     }
 }

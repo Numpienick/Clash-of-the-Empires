@@ -13,7 +13,6 @@ public class Achmed : OffensivePlaceables
     public override void Start()
     {
         base.Start();
-        //checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
         source = GetComponent<AudioSource>();
     }
 
@@ -24,7 +23,6 @@ public class Achmed : OffensivePlaceables
     }
     void TargetCheck()
     {
-        //GameObject target = checkForEnemyRef.mainTarget;
         if (target != null && isExploding == false)
         {
             float distance = Vector3.Distance(target.transform.position, this.transform.position);

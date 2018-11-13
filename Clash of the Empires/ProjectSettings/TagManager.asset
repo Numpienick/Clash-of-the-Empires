@@ -8,6 +8,7 @@ TagManager:
   - Placeables
   - Enemy
   - SelectBox
+  - BodyPart
   layers:
   - Default
   - TransparentFX

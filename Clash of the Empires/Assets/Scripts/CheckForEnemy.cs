@@ -7,6 +7,8 @@ public class CheckForEnemy : MonoBehaviour
 {
     public OffensivePlaceables offensivePlaceablesRef;
     public GameObject mainTarget;
+    [HideInInspector]
+    public bool readyToShoot = false;
 
     // Use this for initialization
     void Awake()
@@ -20,6 +22,7 @@ public class CheckForEnemy : MonoBehaviour
 
         if (enemyUnit != null && offensivePlaceablesRef.currentTeam != enemyUnit.currentTeam)
         {
+            readyToShoot = true;
             mainTarget = enemyUnit.gameObject;
             offensivePlaceablesRef.followTarget = true;
             offensivePlaceablesRef.target = mainTarget;            
@@ -31,6 +34,7 @@ public class CheckForEnemy : MonoBehaviour
         OffensivePlaceables enemyUnit = other.transform.root.GetComponent<OffensivePlaceables>();
         if (enemyUnit != null && offensivePlaceablesRef.currentTeam != enemyUnit.currentTeam)
         {
+            readyToShoot = false;
             mainTarget = null;
         }
     }

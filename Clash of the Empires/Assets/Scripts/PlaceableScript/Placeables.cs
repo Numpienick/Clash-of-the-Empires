@@ -9,7 +9,6 @@ public class Placeables : MonoBehaviour
     public int currentTeam;
     public float currentHealth = 20f;
     public float maxHealth = 100f;
-    public float unitHealth;
 
     public Vector3 spawnpoint;
 
@@ -24,10 +23,10 @@ public class Placeables : MonoBehaviour
     public NavMeshAgent agent;
     public CheckForEnemy checkForEnemyRef;
 
-    public float GetHealthPct()
+    /*public float GetHealthPct()
     {
         return currentHealth / maxHealth;
-    }
+    }*/
 
     public virtual void Awake()
     {
@@ -52,16 +51,19 @@ public class Placeables : MonoBehaviour
             UpdateHealthBarPosition();
             healthFill.value = currentHealth / maxHealth;
         }
+    }
 
-        if (currentHealth > unitHealth)
+    public void DealDamage(float damageValue)
+    {
+        currentHealth -= damageValue;
+        if (currentHealth <= 0)
         {
-            currentHealth = maxHealth;
+            Die();
         }
     }
 
     public void Die()
     {
-        Debug.Log("dead");
         Destroy(gameObject);
     }
 

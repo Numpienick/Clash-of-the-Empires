@@ -12,7 +12,7 @@ public class Healer : OffensivePlaceables
     }
     void Heal(float healValue)
     {
-        GetComponent<OffensivePlaceables>().currentHealth += healValue;
+        GetComponent<Placeables>().currentHealth += healValue;
         Debug.Log("healing...");
 
     }
@@ -21,7 +21,6 @@ public class Healer : OffensivePlaceables
         Placeables unit = other.transform.root.GetComponent<Placeables>();
         if (currentHealth < 100)
         {
-
             Debug.Log("healing...");
         }
     }

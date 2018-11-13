@@ -6,12 +6,12 @@ using UnityEngine.AI;
 public class OffensivePlaceables : Placeables
 {
     public Collider targetCollider;
+
+    public float nextTimeToFire = 0f;
     public bool followTarget = true;
 
     public float damage = 0;
-    public float visionRange = 0;
-    public float shootingRange = 0;
-    public float fireRate = 0;
+    public float fireRate = 15f;
 
     [HideInInspector]
     public GameObject target;
@@ -34,20 +34,7 @@ public class OffensivePlaceables : Placeables
         base.Update();
         if (followTarget)
             FollowTarget(target);
-
-        if (Input.GetKeyDown(KeyCode.X))
-            DealDamage(6);
-    }
-
-    public void DealDamage(float damageValue)
-    {
-        currentHealth -= damageValue;
-        Debug.Log("ouch");
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
+    }   
 
     public void FollowTarget(GameObject target)
     {
