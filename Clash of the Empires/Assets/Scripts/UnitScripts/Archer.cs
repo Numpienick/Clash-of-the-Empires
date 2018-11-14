@@ -6,6 +6,8 @@ public class Archer : OffensivePlaceables
 {
     public GameObject Bullet;
     public GameObject Bullet_Emitter;
+    public Transform arrowHolder;
+    
 
     public override void Start()
     {
@@ -17,20 +19,29 @@ public class Archer : OffensivePlaceables
     public override void Update()
     {
         base.Update();
+        Debug.Log(rb.velocity.z + " " + rb.name);
+        if (checkForEnemyRef.mainTarget != null)
+        {
+            Bullet_Emitter.transform.LookAt(checkForEnemyRef.mainTarget.transform.Find("LookAtMe"));
+            Debug.Log(checkForEnemyRef.mainTarget.transform.Find("LookAtMe"));
+        }
+
+        if (Input.GetKey("h"))
+        {
+            Shoot();
+        }
+
         if (checkForEnemyRef.readyToShoot == true && followTarget == true && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
-        }
+        }       
     }
     public void Shoot()
     {
         GameObject Temporary_Bullet_Handler;
 
-        if (checkForEnemyRef.mainTarget != null)
-            Bullet_Emitter.transform.LookAt(checkForEnemyRef.mainTarget.transform);
-
-        Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation, transform) as GameObject;
+        Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation, arrowHolder) as GameObject;
         Destroy(Temporary_Bullet_Handler, 10.0f);
     }
 }

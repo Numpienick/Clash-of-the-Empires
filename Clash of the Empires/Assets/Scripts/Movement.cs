@@ -8,7 +8,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask clickablesLayer;
 
-    public List<GameObject> selectedObjects;
+    
+    private List<GameObject> selectedObjects;
 
     [HideInInspector]
     public List<GameObject> selectableObjects;

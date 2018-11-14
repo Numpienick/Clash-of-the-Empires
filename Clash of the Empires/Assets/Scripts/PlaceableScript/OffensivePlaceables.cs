@@ -7,6 +7,9 @@ public class OffensivePlaceables : Placeables
 {
     public Collider targetCollider;
 
+    [HideInInspector]
+    public Rigidbody rb;
+
     public float nextTimeToFire = 0f;
     public bool followTarget = true;
 
@@ -26,6 +29,7 @@ public class OffensivePlaceables : Placeables
     public override void Start()
     {
         base.Start();
+        rb = GetComponentInChildren<Rigidbody>();
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
     }
 

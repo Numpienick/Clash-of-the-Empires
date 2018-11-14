@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
 
     private OffensivePlaceables myUnit;
     public GameObject bulletEmitter;
+    private float speed = 8f;
 
     private void Start()
     {
@@ -18,20 +19,21 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         velocity.y -= gravity * Time.deltaTime;
-        transform.Translate(velocity * Time.deltaTime * gravity);
+        transform.Translate(velocity * Time.deltaTime * speed);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // this shit broken atm
-        /*if (other.isTrigger != true)
+       if (other.isTrigger != true)
         {
-            //Debug.Log(other.name);
+            Debug.Log("stuck "+other.name);
             gravity = 0;
             velocity = new Vector3(0, 0, 0);
 
-            this.transform.parent = other.transform;
-        }*/
+           this.transform.parent = other.transform;
+        }
+        
 
         Placeables enemyUnit = null;
         if (other.CompareTag("BodyPart"))
