@@ -6,6 +6,7 @@ public class Achmed : OffensivePlaceables
 {
     public AudioClip detonate;
     public GameObject explosion;
+    
     public bool inDetonateRange = false;
     public bool isExploding = false;
     AudioSource source;
@@ -14,6 +15,7 @@ public class Achmed : OffensivePlaceables
     {
         base.Start();
         source = GetComponent<AudioSource>();
+        
     }
 
     public override void Update()
@@ -44,5 +46,8 @@ public class Achmed : OffensivePlaceables
         yield return new WaitForSeconds(1.5f);
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
+
+       
+
     }
 }
