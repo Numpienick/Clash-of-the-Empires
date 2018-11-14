@@ -97,6 +97,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1382071706458988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4800464149898848}
+  m_Layer: 8
+  m_Name: LookAtMe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1499159071365404
 GameObject:
   m_ObjectHideFlags: 1
@@ -194,6 +209,7 @@ Transform:
   m_Children:
   - {fileID: 4817224829546160}
   - {fileID: 224290688480895620}
+  - {fileID: 4800464149898848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 22.643002, z: 0}
@@ -209,6 +225,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4817224829546160}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4800464149898848
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382071706458988}
+  m_LocalRotation: {x: -0, y: -0.1963103, z: -0, w: 0.9805419}
+  m_LocalPosition: {x: 0, y: 0.522, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4173406420295806}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4817224829546160
 Transform:
@@ -572,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b6c4820cc19824b8446eccdc85b522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: 0
   currentTeam: 1
   currentHealth: 20
   maxHealth: 100
@@ -581,6 +611,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   checkForEnemyRef: {fileID: 0}
   targetCollider: {fileID: 0}
+  rb: {fileID: 0}
   nextTimeToFire: 0
   followTarget: 1
   damage: 0

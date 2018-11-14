@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         if (agent != null)
         {
             float dist = agent.remainingDistance;
-            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance - agent.stoppingDistance <= 0)
+            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && dist - agent.stoppingDistance <= 0)
             {
                 offensivePlaceablesRef.followTarget = true;
             }

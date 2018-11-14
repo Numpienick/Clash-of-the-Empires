@@ -27,7 +27,7 @@ public class Arrow : MonoBehaviour
         // this shit broken atm
        if (other.isTrigger != true)
         {
-            Debug.Log("stuck "+other.name);
+           // Debug.Log("stuck "+other.name);
             gravity = 0;
             velocity = new Vector3(0, 0, 0);
 
