@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Healer : OffensivePlaceables
 {
+    
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.G))
-            DealDamage(6);
+        TargetCheck();
     }
     void Heal(float healValue)
     {
@@ -24,4 +24,22 @@ public class Healer : OffensivePlaceables
             Debug.Log("healing...");
         }
     }
+
+    void TargetCheck()
+    {
+
+        //Checks if there is a target nearby, and if the isExploding bool is false. 
+        if (target != null)
+        {
+
+        if ( target.GetComponent<OffensivePlaceables>().currentHealth != target.GetComponent<OffensivePlaceables>().maxHealth && target.GetComponent<OffensivePlaceables>().currentTeam == this.currentTeam)
+            {
+            Debug.Log("Found a wounded ally!");
+
+            }
+        }
+    }
+
+
+
 }
