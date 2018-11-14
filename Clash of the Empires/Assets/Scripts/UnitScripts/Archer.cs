@@ -19,11 +19,9 @@ public class Archer : OffensivePlaceables
     public override void Update()
     {
         base.Update();
-        Debug.Log(rb.velocity.z + " " + rb.name);
         if (checkForEnemyRef.mainTarget != null)
         {
             Bullet_Emitter.transform.LookAt(checkForEnemyRef.mainTarget.transform.Find("LookAtMe"));
-            Debug.Log(checkForEnemyRef.mainTarget.transform.Find("LookAtMe"));
         }
 
         if (Input.GetKey("h"))

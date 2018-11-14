@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class Placeables : MonoBehaviour
 {
+    [HideInInspector]
+    public bool dead = false;
+
     public int currentTeam;
     public float currentHealth = 20f;
     public float maxHealth = 100f;
@@ -41,7 +44,7 @@ public class Placeables : MonoBehaviour
         {
             healthBar = canvas.GetComponent<RectTransform>();
             healthFill = canvas.GetComponentInChildren<Slider>();
-        }        
+        }
     }
 
     public virtual void Update()
@@ -64,6 +67,7 @@ public class Placeables : MonoBehaviour
 
     public void Die()
     {
+        dead = true;
         Destroy(gameObject);
     }
 
