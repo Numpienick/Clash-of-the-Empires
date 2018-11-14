@@ -4,16 +4,34 @@ using UnityEngine;
 
 public class Boom : MonoBehaviour {
 
+    public float expDmg = 150f;
+    Rigidbody rb;
     // Use this for initialization
     private void Awake()
     {
-        StartCoroutine(DestroySelf());
+        StartCoroutine(Explode());
     }
 
 
-    IEnumerator DestroySelf()
+    IEnumerator Explode()
     {
+        //Creates an array of colliders in range when the explosion effect is instantiated
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 15.0f);
+        
+
+        foreach (Collider collider in colliders)
+        {
+        // Checks if the collider has a Rigidbody    
+            if (rb != null)
+            {
+                rb.GetComponentInParent<Placeables>().DealDamage(expDmg); 
+                // Deals damage according to the publicly set explosion damage variable
+            }
+
+        }
+
         yield return new WaitForSeconds(3f);
+        //Waits three seconds until the patricle effect has fully stopped, and then destroys itself.
         Destroy(gameObject);
     }
 }
