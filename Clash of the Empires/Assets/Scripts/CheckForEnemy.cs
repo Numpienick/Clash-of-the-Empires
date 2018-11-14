@@ -30,7 +30,7 @@ public class CheckForEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(mainEnemy + " is target van " + offensivePlaceablesRef.name);
+        //Debug.Log(mainEnemy + " is target van " + offensivePlaceablesRef.name);
         //if(mainEnemy != null)
         //Debug.Log("noEnemy " + offensivePlaceablesRef.name + " " + mainEnemy.name);
         if (enemyUnit.Count > 0)

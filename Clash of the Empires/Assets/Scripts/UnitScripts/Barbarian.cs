@@ -14,6 +14,5 @@ public class Barbarian : OffensivePlaceables
     public override void Update()
     {
         base.Update();
-
     }
 }
