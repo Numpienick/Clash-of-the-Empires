@@ -13,9 +13,9 @@ public class Boom : MonoBehaviour
     // Use this for initialization.
     private void Awake()
     {
-        StartCoroutine(Explode());
         myUnit = GetComponentInParent<OffensivePlaceables>();
         currentTeam = myUnit.currentTeam;
+        StartCoroutine(Explode());        
         transform.parent = null;
     }
 
