@@ -2,32 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : MonoBehaviour {
-
+public class Boom : MonoBehaviour
+{
     public float expDmg = 150f;
     Placeables enemyVar;
+    private float currentTeam;
+    OffensivePlaceables myUnit;
+    public List<OffensivePlaceables> enemyUnit = new List<OffensivePlaceables>(0);
+
     // Use this for initialization.
     private void Awake()
     {
         StartCoroutine(Explode());
+        myUnit = GetComponentInParent<OffensivePlaceables>();
+        currentTeam = myUnit.currentTeam;
+        transform.parent = null;
     }
-
 
     IEnumerator Explode()
     {
         //Creates an array of colliders in range when the explosion effect is instantiated.
         Collider[] colliders = Physics.OverlapSphere(transform.position, 75.0f);
-        
 
+        //Does damage to the right object
         foreach (Collider collider in colliders)
         {
-        // Checks if the collider has the Placeable script.   
-            if (enemyVar != null)
+            OffensivePlaceables enemy = collider.GetComponentInParent<OffensivePlaceables>();
+            enemyUnit.Add(enemy);
+        }
+        for (int i = 0; i < enemyUnit.Count; i++)
+        {
+            Debug.Log(enemyUnit[i]);
+            if (enemyUnit[i] != null)
             {
-                enemyVar.GetComponentInParent<Placeables>().DealDamage(expDmg); 
-                // Deals damage according to the publicly set explosion damage variable.
+                if (enemyUnit[i].currentTeam != currentTeam)
+                {
+                    Debug.Log(enemyUnit[i].currentTeam);
+                    enemyUnit[i].DealDamage(expDmg);
+                    if (enemyUnit[i].currentHealth <= 0 || enemyUnit[i] == null)
+                    {
+                        Debug.Log("target is getting removed");
+                        enemyUnit.Remove(enemyUnit[i]);
+                    }
+                }
             }
-
         }
 
         yield return new WaitForSeconds(3f);

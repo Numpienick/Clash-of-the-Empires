@@ -14,8 +14,8 @@ public class Achmed : OffensivePlaceables
     public override void Start()
     {
         base.Start();
+        damage = 150;
         source = GetComponent<AudioSource>();
-        
     }
 
     public override void Update()
@@ -32,7 +32,7 @@ public class Achmed : OffensivePlaceables
             {
                 inDetonateRange = true;
             }
-            if (target.GetComponent<OffensivePlaceables>().currentTeam != this.currentTeam && inDetonateRange == true)
+            if (target.GetComponent<OffensivePlaceables>().currentTeam != currentTeam && inDetonateRange == true)
             {
                 StartCoroutine(Explode());
                 isExploding = true;
@@ -44,10 +44,7 @@ public class Achmed : OffensivePlaceables
     {
         source.PlayOneShot(detonate);
         yield return new WaitForSeconds(1.5f);
-        Instantiate(explosion, transform.position, transform.rotation);
+        GameObject boom = Instantiate(explosion, transform.position, transform.rotation, this.transform);       
         Destroy(gameObject);
-
-       
-
     }
 }
