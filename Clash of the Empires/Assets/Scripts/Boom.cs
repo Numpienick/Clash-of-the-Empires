@@ -7,8 +7,8 @@ public class Boom : MonoBehaviour
     public float expDmg = 150f;
     Placeables enemyVar;
     private float currentTeam;
-    OffensivePlaceables myUnit;
-    public List<OffensivePlaceables> enemyUnit = new List<OffensivePlaceables>(0);
+    Placeables myUnit;
+    public List<Placeables> enemyUnit = new List<Placeables>(0);
 
     // Use this for initialization.
     private void Awake()
@@ -27,7 +27,7 @@ public class Boom : MonoBehaviour
         //Does damage to the right object
         foreach (Collider collider in colliders)
         {
-            OffensivePlaceables enemy = collider.GetComponentInParent<OffensivePlaceables>();
+            Placeables enemy = collider.GetComponentInParent<Placeables>();
             enemyUnit.Add(enemy);
         }
         for (int i = 0; i < enemyUnit.Count; i++)

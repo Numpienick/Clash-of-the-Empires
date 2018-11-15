@@ -32,7 +32,7 @@ public class Healer : OffensivePlaceables
         if (target != null)
         {
 
-        if ( target.GetComponent<OffensivePlaceables>().currentHealth != target.GetComponent<OffensivePlaceables>().maxHealth && target.GetComponent<OffensivePlaceables>().currentTeam == this.currentTeam)
+        if ( target.GetComponent<Placeables>().currentHealth != target.GetComponent<Placeables>().maxHealth && target.GetComponent<Placeables>().currentTeam == this.currentTeam)
             {
             Debug.Log("Found a wounded ally!");
 

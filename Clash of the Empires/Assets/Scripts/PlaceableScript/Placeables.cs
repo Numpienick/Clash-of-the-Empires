@@ -21,7 +21,8 @@ public class Placeables : MonoBehaviour
     [HideInInspector]
     public Slider healthFill;
 
-    private float healthbarOffsetY = 1.13f;
+    [HideInInspector]
+    public float healthbarOffsetY = 1.13f;
 
     public NavMeshAgent agent;
     public CheckForEnemy checkForEnemyRef;

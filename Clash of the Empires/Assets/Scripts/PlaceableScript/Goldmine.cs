@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goldmine : MonoBehaviour
+public class Goldmine : Placeables
 {
     public Player playerRef;
     private GameObject player;
@@ -11,15 +11,18 @@ public class Goldmine : MonoBehaviour
     private float timeToSpawn = 5;
 
     // Use this for initialization
-    void Start()
+    public override void Start()
     {
+        base.Start();
+        healthbarOffsetY = 10f;
         player = GameObject.FindGameObjectWithTag("Player");
         playerRef = player.transform.root.GetComponent<Player>();
         InvokeRepeating("GenerateMoney", 5f, timeToSpawn);
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
         Destroy(gameObject, timeAlive);
     }
 

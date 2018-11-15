@@ -10,10 +10,10 @@ public class CheckForEnemy : MonoBehaviour
     //[HideInInspector]
     public bool readyToShoot = false;
 
-    List<OffensivePlaceables> enemyUnit = new List<OffensivePlaceables>(0);
-    OffensivePlaceables[] unitsFound;
+    List<Placeables> enemyUnit = new List<Placeables>(0);
+    Placeables[] unitsFound;
 
-    OffensivePlaceables mainEnemy;
+    Placeables mainEnemy;
 
     // Use this for initialization
     void Awake()
@@ -48,9 +48,9 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        unitsFound = other.transform.root.GetComponents<OffensivePlaceables>();
+        unitsFound = other.transform.root.GetComponents<Placeables>();
 
-        foreach (OffensivePlaceables unit in unitsFound)
+        foreach (Placeables unit in unitsFound)
         {
             enemyUnit.Add(unit);
         }
