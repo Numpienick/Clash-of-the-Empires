@@ -52,7 +52,7 @@ public class OffensivePlaceables : Placeables
             if (distance > 5)
             {
                 agent.SetDestination(targetPosition);
-                this.GetComponent<NavMeshAgent>().speed = 30;
+                this.GetComponent<NavMeshAgent>().speed = 20;
             }
         }
     }

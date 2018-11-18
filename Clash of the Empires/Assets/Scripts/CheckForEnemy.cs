@@ -10,10 +10,10 @@ public class CheckForEnemy : MonoBehaviour
     //[HideInInspector]
     public bool readyToShoot = false;
 
-    List<Placeables> enemyUnit = new List<Placeables>(0);
-    Placeables[] unitsFound;
+    List<OffensivePlaceables> enemyUnit = new List<OffensivePlaceables>(0);
+    //OffensivePlaceables[] unitsFound;
 
-    Placeables mainEnemy;
+    OffensivePlaceables mainEnemy;
 
     // Use this for initialization
     void Awake()
@@ -48,9 +48,9 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        unitsFound = other.transform.root.GetComponents<Placeables>();
+        OffensivePlaceables[]  unitsFound = other.transform.root.GetComponents<OffensivePlaceables>();
 
-        foreach (Placeables unit in unitsFound)
+        foreach (OffensivePlaceables unit in unitsFound)
         {
             enemyUnit.Add(unit);
         }
@@ -74,9 +74,14 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (mainEnemy != null && offensivePlaceablesRef.currentTeam != mainEnemy.currentTeam)
+        OffensivePlaceables target = other.transform.root.GetComponent<OffensivePlaceables>();
+        if (target != null && offensivePlaceablesRef.currentTeam != target.currentTeam)
         {
+            Debug.Log("exiting " + mainEnemy);
+            mainEnemy = null;
             mainTarget = null;
+            offensivePlaceablesRef.followTarget = false;
+            enemyUnit.Remove(mainEnemy);
         }
     }
 }

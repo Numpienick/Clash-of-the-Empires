@@ -657,6 +657,7 @@ MonoBehaviour:
   spawnpoint: {x: 0, y: 0, z: 0}
   canvas: {fileID: 0}
   healthFill: {fileID: 0}
+  healthbarOffsetY: 1.13
   agent: {fileID: 0}
   checkForEnemyRef: {fileID: 0}
   targetCollider: {fileID: 0}
@@ -771,7 +772,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.19
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195755708181530484
 NavMeshAgent:

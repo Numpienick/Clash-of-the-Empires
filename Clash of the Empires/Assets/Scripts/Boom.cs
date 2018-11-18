@@ -15,7 +15,7 @@ public class Boom : MonoBehaviour
     {
         StartCoroutine(Explode());
         myUnit = GetComponentInParent<OffensivePlaceables>();
-        currentTeam = myUnit.currentTeam;
+        currentTeam = 1;
         transform.parent = null;
     }
 
