@@ -10,13 +10,16 @@ public class Boom : MonoBehaviour
     private float currentTeam;
     Placeables myUnit;
     public List<OffensivePlaceables> enemyUnits = new List<OffensivePlaceables>(0);
+    public AudioClip boom;
+    private AudioSource source;
 
     // Use this for initialization.
     private void Awake()
     {
         StartCoroutine(Explode());
-       // myUnit = GetComponentInParent<OffensivePlaceables>();
+        // myUnit = GetComponentInParent<OffensivePlaceables>();
         //transform.parent = null;
+        source = GetComponent<AudioSource>();
     }
 
     IEnumerator Explode()
@@ -39,8 +42,9 @@ public class Boom : MonoBehaviour
             target.DealDamage(expDmg);            
             enemyUnits.RemoveAt(0);
         }
-        yield return new WaitForSeconds(3f);
+        source.PlayOneShot(boom);
         //Waits three seconds until the patricle effect has fully stopped, and then destroys itself.
-        Destroy(gameObject);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(this);
     }
 }

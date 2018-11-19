@@ -15,7 +15,7 @@ public class Player : ClashOfTheEmpires
     private bool AI;
     public int money = 1000;
 
-    public GameObject barracks;
+    public GameObject turret;
     public GameObject goldmine;
     public GameObject archer;
     public GameObject barbarian;
@@ -25,6 +25,7 @@ public class Player : ClashOfTheEmpires
     private MainGrid grid;
 
     private bool goldmineSelected = false;
+    private bool turretSelected = false;
 
     [HideInInspector]
     public List<GameObject> selectableObjects;
@@ -100,6 +101,22 @@ public class Player : ClashOfTheEmpires
         if (goldmineSelected == true && Input.GetMouseButtonDown(0))
         {
             goldmineSelected = false;
+        }
+
+        if (turretSelected == true && Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hitInfo;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+               Turret(hitInfo.point);
+            }
+        }
+
+        if (turretSelected == true && Input.GetMouseButtonDown(0))
+        {
+            turretSelected = false;
         }
     }
 
@@ -184,10 +201,16 @@ public class Player : ClashOfTheEmpires
         }
     }
 
-    public void Barracks()
+    public void Turret(Vector3 clickPoint)
     {
-        PlaceUnit(100, 200, barracks);
-        Debug.Log("Unit placed");
+        finalPosition = grid.GetNearestPointOnGrid(clickPoint);
+        if (money - 200 >= 0 && grid.spawn)
+        {
+            turret.transform.position = finalPosition;
+            money -= 200;
+            Instantiate(turret, finalPosition, Quaternion.identity);
+            turretSelected = false;
+        }
     }
 
     public void goldMine(Vector3 clickPoint)
@@ -205,6 +228,11 @@ public class Player : ClashOfTheEmpires
     public void GoldMineSelected()
     {
         goldmineSelected = true;
+    }
+
+    public void TurretSelected()
+    {
+        turretSelected = true;
     }
 
     public void Archer()
