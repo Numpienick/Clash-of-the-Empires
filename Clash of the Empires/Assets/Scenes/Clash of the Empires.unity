@@ -313,15 +313,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114813402689530828, guid: 1aa3ad345cf106d4498db31426933e54,
-        type: 2}
-      propertyPath: maxHealth
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174627806016936, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
-      propertyPath: m_TagString
-      value: CheckForEnemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
   m_IsPrefabParent: 0
