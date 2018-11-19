@@ -49,7 +49,7 @@ public class OffensivePlaceables : Placeables
 
             float distance = Vector3.Distance(target.transform.position, this.transform.position);
 
-            if (distance > 5)
+            if (distance > 5 && target.currentHealth > 0)
             {
                 Debug.Log(this.name + " imma chase ya");
                 agent.SetDestination(targetPosition);

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Boom : MonoBehaviour
 {
-    public float expDmg = 150f;
+    public float expDmg = 200f;
+    OffensivePlaceables target;
     Placeables enemyVar;
     private float currentTeam;
     Placeables myUnit;
-    public List<Placeables> enemyUnit = new List<Placeables>(0);
+    public List<OffensivePlaceables> enemyUnits = new List<OffensivePlaceables>(0);
 
     // Use this for initialization.
     private void Awake()
     {
         StartCoroutine(Explode());
-        myUnit = GetComponentInParent<OffensivePlaceables>();
-        currentTeam = 1;
-        transform.parent = null;
+       // myUnit = GetComponentInParent<OffensivePlaceables>();
+        //transform.parent = null;
     }
 
     IEnumerator Explode()
@@ -24,30 +24,21 @@ public class Boom : MonoBehaviour
         //Creates an array of colliders in range when the explosion effect is instantiated.
         Collider[] colliders = Physics.OverlapSphere(transform.position, 75.0f);
 
-        //Does damage to the right object
         foreach (Collider collider in colliders)
         {
-            Placeables enemy = collider.GetComponentInParent<Placeables>();
-            enemyUnit.Add(enemy);
-        }
-        for (int i = 0; i < enemyUnit.Count; i++)
-        {
-            Debug.Log(enemyUnit[i]);
-            if (enemyUnit[i] != null)
+            if (collider.tag == "BodyPart")
             {
-                if (enemyUnit[i].currentTeam != currentTeam)
-                {
-                    Debug.Log(enemyUnit[i].currentTeam);
-                    enemyUnit[i].DealDamage(expDmg);
-                    if (enemyUnit[i].currentHealth <= 0 || enemyUnit[i] == null)
-                    {
-                        Debug.Log("target is getting removed");
-                        enemyUnit.Remove(enemyUnit[i]);
-                    }
-                }
+                target = collider.GetComponentInParent<OffensivePlaceables>();
+                enemyUnits.Add(target);
+                target = enemyUnits[0];
             }
         }
 
+        if (target != null)
+        {
+            target.DealDamage(expDmg);            
+            enemyUnits.RemoveAt(0);
+        }
         yield return new WaitForSeconds(3f);
         //Waits three seconds until the patricle effect has fully stopped, and then destroys itself.
         Destroy(gameObject);

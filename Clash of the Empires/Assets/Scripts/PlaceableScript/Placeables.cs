@@ -50,15 +50,16 @@ public class Placeables : MonoBehaviour
             UpdateHealthBarPosition();
             healthFill.value = currentHealth / maxHealth;
         }
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void DealDamage(float damageValue)
     {
         currentHealth -= damageValue;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     public void Die()
@@ -66,7 +67,7 @@ public class Placeables : MonoBehaviour
         dead = true;
         CheckForEnemy scriptRef = GetComponentInChildren<CheckForEnemy>();
         scriptRef.enemy.checkForEnemyRef.enemies.RemoveAt(0);
-        
+
         if (gameObject != null)
             Destroy(gameObject);
     }
