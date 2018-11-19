@@ -17,7 +17,7 @@ public class OffensivePlaceables : Placeables
     public float fireRate = 15f;
 
     [HideInInspector]
-    public GameObject target;
+    public OffensivePlaceables target;
 
     // Use this for initialization
     public override void Awake()
@@ -36,11 +36,11 @@ public class OffensivePlaceables : Placeables
     public override void Update()
     {
         base.Update();
-        if (followTarget)
+        if (checkForEnemyRef.moveToTarget == true)
             FollowTarget(target);
-    }   
+    }
 
-    public void FollowTarget(GameObject target)
+    public void FollowTarget(OffensivePlaceables target)
     {
         if (target != null)
         {
@@ -49,10 +49,11 @@ public class OffensivePlaceables : Placeables
 
             float distance = Vector3.Distance(target.transform.position, this.transform.position);
 
-            if (distance > 5)
+            if (distance > 5 && target.currentHealth > 0)
             {
+                Debug.Log(this.name + " imma chase ya");
                 agent.SetDestination(targetPosition);
-                this.GetComponent<NavMeshAgent>().speed = 30;
+                this.GetComponent<NavMeshAgent>().speed = 20;
             }
         }
     }

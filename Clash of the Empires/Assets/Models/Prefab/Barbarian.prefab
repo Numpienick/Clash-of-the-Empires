@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 54409161074153242}
   m_Layer: 2
   m_Name: Barbarian
-  m_TagString: Untagged
+  m_TagString: CheckForEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,10 +122,11 @@ GameObject:
   - component: {fileID: 4183396472639240}
   - component: {fileID: 33156595468484762}
   - component: {fileID: 23822293110736354}
-  - component: {fileID: 64164338324251944}
+  - component: {fileID: 65027743387017988}
+  - component: {fileID: 114014332952771332}
   m_Layer: 0
-  m_Name: pCube2
-  m_TagString: BodyPart
+  m_Name: Sword
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,13 +220,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499159071365404}
-  m_LocalRotation: {x: 0, y: -0, z: -0.5047096, w: 0.8632892}
-  m_LocalPosition: {x: 0.0013937777, y: 0.011502148, z: -0.009186845}
-  m_LocalScale: {x: 0.11309033, y: 0.58933145, z: 0.12714846}
+  m_LocalRotation: {x: 0.14690687, y: -0.077116355, z: -0.5193679, w: 0.838289}
+  m_LocalPosition: {x: 0.00404, y: 0.01337, z: -0.0063}
+  m_LocalScale: {x: 0.11309033, y: 0.99187595, z: 0.12714846}
   m_Children: []
   m_Father: {fileID: 4817224829546160}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.567, y: -16.611, z: -64.961006}
 --- !u!4 &4800464149898848
 Transform:
   m_ObjectHideFlags: 1
@@ -392,20 +393,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64164338324251944
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1499159071365404}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: 93e773540627ff547b9f5c1f94d397b0, type: 3}
 --- !u!64 &64621440570422520
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -420,6 +407,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 93e773540627ff547b9f5c1f94d397b0, type: 3}
+--- !u!65 &65027743387017988
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499159071365404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018460892, y: 0.02729454, z: 0.01000001}
+  m_Center: {x: 0.0000000034586531, y: 0.008647269, z: 0.000000002061669}
 --- !u!95 &95532916404448890
 Animator:
   serializedVersion: 3
@@ -437,6 +436,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114014332952771332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499159071365404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7535e9f4d3186714babf1d08290d108e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackReady: 0
 --- !u!114 &114189419657439832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,8 +572,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offensivePlaceablesRef: {fileID: 0}
-  mainTarget: {fileID: 0}
   readyToShoot: 0
+  enemies: []
+  enemy: {fileID: 0}
+  moveToTarget: 0
 --- !u!114 &114679320508315536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -604,10 +617,11 @@ MonoBehaviour:
   dead: 0
   currentTeam: 1
   currentHealth: 20
-  maxHealth: 100
+  maxHealth: 150
   spawnpoint: {x: 0, y: 0, z: 0}
   canvas: {fileID: 0}
   healthFill: {fileID: 114479968183246492}
+  healthbarOffsetY: 1.13
   agent: {fileID: 0}
   checkForEnemyRef: {fileID: 0}
   targetCollider: {fileID: 0}
@@ -656,7 +670,7 @@ NavMeshAgent:
   m_Acceleration: 2000
   avoidancePriority: 50
   m_AngularSpeed: 2000
-  m_StoppingDistance: 10
+  m_StoppingDistance: 8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

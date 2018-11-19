@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - SelectBox
   - BodyPart
+  - CheckForEnemy
   layers:
   - Default
   - TransparentFX

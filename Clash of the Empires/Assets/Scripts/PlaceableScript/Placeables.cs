@@ -21,15 +21,11 @@ public class Placeables : MonoBehaviour
     [HideInInspector]
     public Slider healthFill;
 
-    private float healthbarOffsetY = 1.13f;
+    [HideInInspector]
+    public float healthbarOffsetY = 1.13f;
 
     public NavMeshAgent agent;
     public CheckForEnemy checkForEnemyRef;
-
-    /*public float GetHealthPct()
-    {
-        return currentHealth / maxHealth;
-    }*/
 
     public virtual void Awake()
     {
@@ -54,21 +50,26 @@ public class Placeables : MonoBehaviour
             UpdateHealthBarPosition();
             healthFill.value = currentHealth / maxHealth;
         }
-    }
 
-    public void DealDamage(float damageValue)
-    {
-        currentHealth -= damageValue;
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
+    public void DealDamage(float damageValue)
+    {
+        currentHealth -= damageValue;
+    }
+
     public void Die()
     {
         dead = true;
-        Destroy(gameObject);
+        CheckForEnemy scriptRef = GetComponentInChildren<CheckForEnemy>();
+        scriptRef.enemy.checkForEnemyRef.enemies.RemoveAt(0);
+
+        if (gameObject != null)
+            Destroy(gameObject);
     }
 
     private void UpdateHealthBarPosition()

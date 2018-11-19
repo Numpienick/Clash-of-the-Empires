@@ -27,7 +27,6 @@ public class Achmed : OffensivePlaceables
     }
     void TargetCheck()
     {
-
         //Checks if there is a target nearby, and if the isExploding bool is false. 
         if (target != null && isExploding == false)
         {
@@ -56,10 +55,6 @@ public class Achmed : OffensivePlaceables
         //Plays the sound clip, waits the time before the clip has played long enough, and instantiates 
         //a gameobject with a particle system, which has the full explosion sound effect, and which handles damage.
         Instantiate(explosion, transform.position, transform.rotation);
-        Destroy(gameObject);
-        //Destroys achmed after detonation.
-
-       
-
+        currentHealth = 0;
     }
 }

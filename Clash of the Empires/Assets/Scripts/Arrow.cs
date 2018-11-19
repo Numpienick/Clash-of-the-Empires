@@ -44,7 +44,6 @@ public class Arrow : MonoBehaviour
         if (enemyUnit != null && enemyUnit.currentTeam != myUnit.currentTeam)
         {
             enemyUnit.DealDamage(myUnit.damage);
-            enemyUnit = null;
         }
     }
 }

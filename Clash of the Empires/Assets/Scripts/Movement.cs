@@ -30,12 +30,17 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if (agent != null)
+        if (agent != null && agent.isOnNavMesh)
         {
             float dist = agent.remainingDistance;
+            
             if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && dist - agent.stoppingDistance <= 0)
             {
-                offensivePlaceablesRef.followTarget = true;
+                offensivePlaceablesRef.checkForEnemyRef.moveToTarget = true;
+            }
+            else
+            {
+                offensivePlaceablesRef.checkForEnemyRef.moveToTarget = false;
             }
         }
 
@@ -52,7 +57,7 @@ public class Movement : MonoBehaviour
             foreach (GameObject unit in selectedObjects)
             {
                 offensivePlaceablesRef = unit.GetComponent<OffensivePlaceables>();
-                offensivePlaceablesRef.followTarget = false;
+                offensivePlaceablesRef.checkForEnemyRef.moveToTarget = false;
                 agent = unit.GetComponent<NavMeshAgent>();
                 agent.speed = 50;
                 agent.SetDestination(GetPointUnderCursor());
@@ -62,7 +67,6 @@ public class Movement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             mousePos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
 
             RaycastHit rayHit;
 
