@@ -27,11 +27,6 @@ public class Placeables : MonoBehaviour
     public NavMeshAgent agent;
     public CheckForEnemy checkForEnemyRef;
 
-    /*public float GetHealthPct()
-    {
-        return currentHealth / maxHealth;
-    }*/
-
     public virtual void Awake()
     {
         healthbarOffsetY = 6;
@@ -69,7 +64,11 @@ public class Placeables : MonoBehaviour
     public void Die()
     {
         dead = true;
-        Destroy(gameObject);
+        CheckForEnemy scriptRef = GetComponentInChildren<CheckForEnemy>();
+        scriptRef.enemy.checkForEnemyRef.enemies.RemoveAt(0);
+        
+        if (gameObject != null)
+            Destroy(gameObject);
     }
 
     private void UpdateHealthBarPosition()

@@ -11,7 +11,8 @@ public class Player : ClashOfTheEmpires
 
     public GameObject pauseMenuUI;
 
-    public GameObject enemy;
+    public Player enemy;
+    private bool AI;
     public int money = 1000;
 
     public GameObject barracks;
@@ -46,6 +47,16 @@ public class Player : ClashOfTheEmpires
     // Use this for initialization
     void Start()
     {
+        //ik wou bezig met AI van de enemy maarja das nie nodig
+        /*
+        Player[] players;
+        players = FindObjectsOfType<Player>();
+        foreach(Player player in players)
+        {
+            if (player.currentTeam != currentTeam)
+                enemy = player;
+        }*/
+
         selectedObjects = new List<GameObject>();
         selectableObjects = new List<GameObject>();
         cam = Camera.main;

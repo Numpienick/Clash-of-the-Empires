@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class CheckForEnemy : MonoBehaviour
 {
+    [HideInInspector]
     public OffensivePlaceables offensivePlaceablesRef;
-    public GameObject mainTarget;
-    //[HideInInspector]
+
+    [HideInInspector]
     public bool readyToShoot = false;
 
-    List<OffensivePlaceables> enemyUnit = new List<OffensivePlaceables>(0);
-    //OffensivePlaceables[] unitsFound;
+    [HideInInspector]
+    public List<OffensivePlaceables> enemies = new List<OffensivePlaceables>(0);
 
-    OffensivePlaceables mainEnemy;
+    [HideInInspector]
+    public OffensivePlaceables enemy = null;
+
+    OffensivePlaceables[] targets = null;
+
+    public bool moveToTarget;
 
     // Use this for initialization
     void Awake()
@@ -21,68 +27,49 @@ public class CheckForEnemy : MonoBehaviour
         offensivePlaceablesRef = transform.root.GetComponent<OffensivePlaceables>();
     }
 
-    /*public void OnTriggerEnter(Collider other)
-    {
-        OffensivePlaceables enemyUnits = other.transform.root.GetComponent<OffensivePlaceables>();
-        if(enemyUnits != null)
-        enemyUnits.followTarget = true;
-    }*/
-
     private void Update()
     {
-        //Debug.Log(mainEnemy + " is target van " + offensivePlaceablesRef.name);
-        //if(mainEnemy != null)
-        //Debug.Log("noEnemy " + offensivePlaceablesRef.name + " " + mainEnemy.name);
-        if (enemyUnit.Count > 0)
+        if (enemy == null)
         {
-            mainEnemy = enemyUnit[0];
-
-            if (mainEnemy == null)
-            {
-                readyToShoot = false;
-                offensivePlaceablesRef.followTarget = false;
-                enemyUnit.RemoveAt(0);
-            }
+            readyToShoot = false;
+            moveToTarget = false;
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        OffensivePlaceables[]  unitsFound = other.transform.root.GetComponents<OffensivePlaceables>();
+        if (other.tag == "CheckForEnemy")
+            targets = other.GetComponentsInParent<OffensivePlaceables>();
 
-        foreach (OffensivePlaceables unit in unitsFound)
+        if (targets != null)
         {
-            enemyUnit.Add(unit);
-        }
-
-        for (int i = 0; i < enemyUnit.Count; i++)
-        {
-            if (enemyUnit[i].currentTeam == offensivePlaceablesRef.currentTeam)
+            for (int i = 0; i < targets.Length; i++)
             {
-                enemyUnit.RemoveAt(i);
+                if (targets[i].currentTeam != offensivePlaceablesRef.currentTeam)
+                {
+                    enemy = targets[i];
+                    enemies.Add(enemy);
+                    enemy = enemies[0];
+                }
             }
-        }
 
-        if (mainEnemy != null && offensivePlaceablesRef.currentTeam != mainEnemy.currentTeam)
-        {
-            offensivePlaceablesRef.followTarget = true;
-            readyToShoot = true;
-            mainTarget = mainEnemy.gameObject;
-            offensivePlaceablesRef.target = mainTarget;
+            if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
+            {
+                moveToTarget = true;
+                readyToShoot = true;
+                offensivePlaceablesRef.target = enemy;
+            }
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        OffensivePlaceables target = other.transform.root.GetComponent<OffensivePlaceables>();
-        if (target != null && offensivePlaceablesRef.currentTeam != target.currentTeam)
+        if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
         {
-            Debug.Log("exiting " + mainEnemy);
-            mainEnemy = null;
-            mainTarget = null;
+            enemies.Remove(enemy);
+            moveToTarget = false;
+            enemy = null;
             offensivePlaceablesRef.followTarget = false;
-            enemyUnit.Remove(mainEnemy);
         }
     }
 }
-
