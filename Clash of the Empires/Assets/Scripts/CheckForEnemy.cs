@@ -44,8 +44,7 @@ public class CheckForEnemy : MonoBehaviour
             {
                 if (targets[i].currentTeam != offensivePlaceablesRef.currentTeam)
                 {
-                    enemy = targets[i];
-                    enemies.Add(enemy);
+                    enemies.Add(targets[i]);
                     enemy = enemies[0];
                 }
             }

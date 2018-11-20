@@ -66,7 +66,7 @@ public class Placeables : MonoBehaviour
     {
         dead = true;
         CheckForEnemy scriptRef = GetComponentInChildren<CheckForEnemy>();
-        if (scriptRef.enemy != null)
+        if (scriptRef != null && scriptRef.enemy != null)
             scriptRef.enemy.checkForEnemyRef.enemies.RemoveAt(0);
 
         if (gameObject != null)

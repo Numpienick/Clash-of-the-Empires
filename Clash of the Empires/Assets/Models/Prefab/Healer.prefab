@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 23549713767455656}
   - component: {fileID: 114784543541579472}
   - component: {fileID: 195273884577171746}
-  - component: {fileID: 114235667555428218}
+  - component: {fileID: 114542240801362694}
   m_Layer: 8
   m_Name: Healer
   m_TagString: Placeables
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 95542348823577264}
   - component: {fileID: 135208560398704968}
   - component: {fileID: 54174517389094438}
-  - component: {fileID: 114272794727950378}
+  - component: {fileID: 114833573929675208}
   m_Layer: 2
   m_Name: Healer (2)
   m_TagString: CheckForEnemy
@@ -518,50 +518,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114235667555428218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1460325604208400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5afcfa66b80b94a8f8a3b097945bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dead: 0
-  currentTeam: 1
-  currentHealth: 20
-  maxHealth: 100
-  spawnpoint: {x: 0, y: 0, z: 0}
-  canvas: {fileID: 0}
-  healthFill: {fileID: 0}
-  healthbarOffsetY: 1.13
-  agent: {fileID: 0}
-  checkForEnemyRef: {fileID: 0}
-  targetCollider: {fileID: 0}
-  rb: {fileID: 0}
-  nextTimeToFire: 0
-  damage: 0
-  fireRate: 0
-  target: {fileID: 0}
-  moveToTarget: 0
-  turret: 0
---- !u!114 &114272794727950378
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1882042437031910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 160ded570fb76e54097b5a3d9f5d9f1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offensivePlaceablesRef: {fileID: 0}
-  readyToShoot: 0
-  enemies: []
-  enemy: {fileID: 0}
 --- !u!114 &114297394447944088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,6 +534,35 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114542240801362694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460325604208400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c77476f5c2cc164b816dbfbbdb7903f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dead: 0
+  currentTeam: 1
+  currentHealth: 20
+  maxHealth: 100
+  spawnpoint: {x: 0, y: 0, z: 0}
+  canvas: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthbarOffsetY: 1.13
+  agent: {fileID: 0}
+  checkForEnemyRef: {fileID: 0}
+  targetCollider: {fileID: 0}
+  rb: {fileID: 0}
+  nextTimeToFire: 0
+  damage: 0
+  fireRate: 15
+  target: {fileID: 0}
+  moveToTarget: 0
+  turret: 0
 --- !u!114 &114744702444763468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -619,6 +604,19 @@ MonoBehaviour:
   red: {fileID: 2100000, guid: 7f85fd5363a88ac428aeefc76241fe04, type: 2}
   green: {fileID: 2100000, guid: 20a8de7bd84084c47866f21e2c08d27d, type: 2}
   currentlySelected: 0
+--- !u!114 &114833573929675208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882042437031910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5afcfa66b80b94a8f8a3b097945bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  units: []
+  unit: {fileID: 0}
 --- !u!135 &135208560398704968
 SphereCollider:
   m_ObjectHideFlags: 1
