@@ -11,13 +11,16 @@ public class OffensivePlaceables : Placeables
     public Rigidbody rb;
 
     public float nextTimeToFire = 0f;
-    public bool followTarget = true;
 
     public float damage = 0;
     public float fireRate = 15f;
 
     [HideInInspector]
     public OffensivePlaceables target;
+
+    public bool moveToTarget;
+
+    public bool turret = false;
 
     // Use this for initialization
     public override void Awake()
@@ -36,7 +39,7 @@ public class OffensivePlaceables : Placeables
     public override void Update()
     {
         base.Update();
-        if (checkForEnemyRef.moveToTarget == true)
+        if (moveToTarget == true && turret == false)
             FollowTarget(target);
     }
 
@@ -49,7 +52,7 @@ public class OffensivePlaceables : Placeables
 
             float distance = Vector3.Distance(target.transform.position, this.transform.position);
 
-            if (distance > 5 && target.currentHealth > 0)
+            if (distance > 3 && target.currentHealth > 0 && currentHealth > 0)
             {
                 Debug.Log(this.name + " imma chase ya");
                 agent.SetDestination(targetPosition);

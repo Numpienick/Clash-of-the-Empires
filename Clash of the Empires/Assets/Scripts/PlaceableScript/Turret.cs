@@ -1,39 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DigitalRuby.LightningBolt;
+﻿using UnityEngine;
 
-public class Turret : Placeables {
-
-    public Player playerRef;
-    private GameObject player;
-    public Collider turretRange;
-    public float damage = 5f;
+public class Turret : OffensivePlaceables
+{
     public float shockRate = 0.6f;
     public GameObject lightningStrike;
-    public OffensivePlaceables target;
-    public GameObject shockingGO;
     public bool striking = false;
 
     public override void Start()
     {
         base.Start();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerRef = player.transform.root.GetComponent<Player>();
+        healthbarOffsetY = 24;
+        damage = 5;
+        checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
         lightningStrike.SetActive(false);
         striking = false;
     }
 
-    void OnTriggerStay(Collider other)
+    public override void Update()
     {
-        target = other.GetComponent<OffensivePlaceables>();
-        //shockingGO = other;
-        if (target.currentTeam != playerRef.currentTeam)
+        base.Update();
+        moveToTarget = false;
+
+        if (checkForEnemyRef.readyToShoot)
         {
             Electrocute();
         }
-    }
 
+        if (!checkForEnemyRef.readyToShoot)
+        {
+            striking = false;
+            lightningStrike.SetActive(false);
+        }
+    }
 
     void Electrocute()
     {
@@ -41,14 +39,17 @@ public class Turret : Placeables {
         {
             striking = true;
             lightningStrike.SetActive(true);
-            //lightningStrike.GetComponent<LightningBoltScript>().EndObject = shockingGO;
             InvokeRepeating("Shock", 0.6f, shockRate);
         }
     }
 
     void Shock()
     {
-        target.DealDamage(damage);
+        if (checkForEnemyRef.enemy != null)
+        {
+            target.DealDamage(damage);
+            if (checkForEnemyRef.enemy != null)
+                lightningStrike.transform.LookAt(checkForEnemyRef.enemy.transform);
+        }
     }
-	
 }

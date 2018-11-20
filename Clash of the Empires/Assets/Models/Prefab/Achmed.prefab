@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114870601174263292}
   m_Layer: 2
   m_Name: Achmed
-  m_TagString: Untagged
+  m_TagString: CheckForEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -965,15 +965,17 @@ MonoBehaviour:
   spawnpoint: {x: 0, y: 0, z: 0}
   canvas: {fileID: 0}
   healthFill: {fileID: 0}
+  healthbarOffsetY: 1.13
   agent: {fileID: 0}
   checkForEnemyRef: {fileID: 0}
   targetCollider: {fileID: 0}
   rb: {fileID: 0}
   nextTimeToFire: 0
-  followTarget: 1
   damage: 0
   fireRate: 0
   target: {fileID: 0}
+  moveToTarget: 0
+  turret: 0
   detonate: {fileID: 8300000, guid: 6b2561bb7b0bbc048bfa1c202fb110df, type: 3}
   explosion: {fileID: 1717269929758762, guid: 0f23612fc39330b4292e9bc78a2bf296, type: 2}
   inDetonateRange: 0
@@ -1044,8 +1046,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offensivePlaceablesRef: {fileID: 0}
-  mainTarget: {fileID: 0}
   readyToShoot: 0
+  enemies: []
+  enemy: {fileID: 0}
 --- !u!135 &135442294826524848
 SphereCollider:
   m_ObjectHideFlags: 1

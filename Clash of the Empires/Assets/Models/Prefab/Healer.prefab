@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 114272794727950378}
   m_Layer: 2
   m_Name: Healer (2)
-  m_TagString: Untagged
+  m_TagString: CheckForEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,15 +536,17 @@ MonoBehaviour:
   spawnpoint: {x: 0, y: 0, z: 0}
   canvas: {fileID: 0}
   healthFill: {fileID: 0}
+  healthbarOffsetY: 1.13
   agent: {fileID: 0}
   checkForEnemyRef: {fileID: 0}
   targetCollider: {fileID: 0}
   rb: {fileID: 0}
   nextTimeToFire: 0
-  followTarget: 1
   damage: 0
   fireRate: 0
   target: {fileID: 0}
+  moveToTarget: 0
+  turret: 0
 --- !u!114 &114272794727950378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -557,8 +559,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offensivePlaceablesRef: {fileID: 0}
-  mainTarget: {fileID: 0}
   readyToShoot: 0
+  enemies: []
+  enemy: {fileID: 0}
 --- !u!114 &114297394447944088
 MonoBehaviour:
   m_ObjectHideFlags: 1

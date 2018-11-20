@@ -13,7 +13,7 @@ public class Barbarian : OffensivePlaceables
         base.Start();
         fireRate = 0.9f;
         damage = 20;
-        agent.stoppingDistance = 9;
+        agent.stoppingDistance = 6;
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
         swordScript = GetComponentInChildren<Sword>();
     }
@@ -22,7 +22,7 @@ public class Barbarian : OffensivePlaceables
     {
         base.Update();
         //Attacking according to the fireRate
-        if (checkForEnemyRef.readyToShoot == true && followTarget == true && Time.time >= nextTimeToFire && swordScript.attackReady == true)
+        if (checkForEnemyRef.readyToShoot == true && moveToTarget == true && Time.time >= nextTimeToFire && swordScript.attackReady == true)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Attack();

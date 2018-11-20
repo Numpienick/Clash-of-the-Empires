@@ -8,7 +8,6 @@ public class CheckForEnemy : MonoBehaviour
     [HideInInspector]
     public OffensivePlaceables offensivePlaceablesRef;
 
-    [HideInInspector]
     public bool readyToShoot = false;
 
     [HideInInspector]
@@ -18,8 +17,6 @@ public class CheckForEnemy : MonoBehaviour
     public OffensivePlaceables enemy = null;
 
     OffensivePlaceables[] targets = null;
-
-    public bool moveToTarget;
 
     // Use this for initialization
     void Awake()
@@ -32,7 +29,7 @@ public class CheckForEnemy : MonoBehaviour
         if (enemy == null)
         {
             readyToShoot = false;
-            moveToTarget = false;
+            offensivePlaceablesRef.moveToTarget = false;
         }
     }
 
@@ -55,7 +52,8 @@ public class CheckForEnemy : MonoBehaviour
 
             if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
             {
-                moveToTarget = true;
+                if (offensivePlaceablesRef.turret == false)
+                    offensivePlaceablesRef.moveToTarget = true;
                 readyToShoot = true;
                 offensivePlaceablesRef.target = enemy;
             }
@@ -64,12 +62,14 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
+        if (other.tag == "CheckForEnemy")
         {
-            enemies.Remove(enemy);
-            moveToTarget = false;
-            enemy = null;
-            offensivePlaceablesRef.followTarget = false;
+            if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
+            {
+                enemies.Remove(enemy);
+                offensivePlaceablesRef.moveToTarget = false;
+                enemy = null;
+            }
         }
     }
 }

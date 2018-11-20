@@ -21,7 +21,7 @@ public class Archer : OffensivePlaceables
     {
         base.Update();
         //adjusting the stopping distance of the Archer according to which "mode" it's in
-        switch (checkForEnemyRef.readyToShoot)
+        /*switch (checkForEnemyRef.readyToShoot)
         {
             case (true):
                 agent.stoppingDistance = 40;
@@ -30,7 +30,7 @@ public class Archer : OffensivePlaceables
             case (false):
                 agent.stoppingDistance = 10;
                 break;
-        }
+        }*/
         //Finding where the archer needs to aim at
         if (checkForEnemyRef.enemy != null)
         {
@@ -44,7 +44,7 @@ public class Archer : OffensivePlaceables
          }*/
 
         //letting the archer shoot according to it's fire rate and whether or not it has found an enemy
-        if (checkForEnemyRef.readyToShoot == true && followTarget == true && Time.time >= nextTimeToFire)
+        if (checkForEnemyRef.readyToShoot == true && moveToTarget == true && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();

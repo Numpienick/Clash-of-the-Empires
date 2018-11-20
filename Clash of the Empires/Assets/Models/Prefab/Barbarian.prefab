@@ -575,7 +575,6 @@ MonoBehaviour:
   readyToShoot: 0
   enemies: []
   enemy: {fileID: 0}
-  moveToTarget: 0
 --- !u!114 &114679320508315536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,10 +626,11 @@ MonoBehaviour:
   targetCollider: {fileID: 0}
   rb: {fileID: 0}
   nextTimeToFire: 0
-  followTarget: 1
   damage: 0
   fireRate: 0
   target: {fileID: 0}
+  moveToTarget: 0
+  turret: 0
 --- !u!114 &114922015316661798
 MonoBehaviour:
   m_ObjectHideFlags: 1

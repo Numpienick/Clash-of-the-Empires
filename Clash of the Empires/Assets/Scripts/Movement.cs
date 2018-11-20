@@ -36,11 +36,11 @@ public class Movement : MonoBehaviour
             
             if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && dist - agent.stoppingDistance <= 0)
             {
-                offensivePlaceablesRef.checkForEnemyRef.moveToTarget = true;
+                offensivePlaceablesRef.moveToTarget = true;
             }
             else
             {
-                offensivePlaceablesRef.checkForEnemyRef.moveToTarget = false;
+                offensivePlaceablesRef.moveToTarget = false;
             }
         }
 
@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
             foreach (GameObject unit in selectedObjects)
             {
                 offensivePlaceablesRef = unit.GetComponent<OffensivePlaceables>();
-                offensivePlaceablesRef.checkForEnemyRef.moveToTarget = false;
+                offensivePlaceablesRef.moveToTarget = false;
                 agent = unit.GetComponent<NavMeshAgent>();
                 agent.speed = 50;
                 agent.SetDestination(GetPointUnderCursor());
