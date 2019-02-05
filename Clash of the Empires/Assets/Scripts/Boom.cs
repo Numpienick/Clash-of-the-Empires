@@ -4,47 +4,49 @@ using UnityEngine;
 
 public class Boom : MonoBehaviour
 {
-    public float expDmg = 200f;
+    public float damage = 200f;
+    float scaledDamage;
+    float maximumDamage = 250f;
+    float minimumDamage = 75f;
     OffensivePlaceables target;
     Placeables enemyVar;
-    private float currentTeam;
-    Placeables myUnit;
+    public float currentTeam;
     public List<OffensivePlaceables> enemyUnits = new List<OffensivePlaceables>(0);
     public AudioClip boom;
-    private AudioSource source;
+    public AudioSource source;
+
+    private float fractionalDistance;
 
     // Use this for initialization.
     private void Awake()
     {
+        scaledDamage = maximumDamage - minimumDamage;
         StartCoroutine(Explode());
-        // myUnit = GetComponentInParent<OffensivePlaceables>();
-        //transform.parent = null;
-        source = GetComponent<AudioSource>();
     }
 
     IEnumerator Explode()
     {
-        //Creates an array of colliders in range when the explosion effect is instantiated.
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 75.0f);
-
-        foreach (Collider collider in colliders)
+        RaycastHit[] hitinfo = Physics.SphereCastAll(transform.position, 50, Vector3.forward, 50, int.MaxValue, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit hit1 in hitinfo)
         {
-            if (collider.tag == "BodyPart")
+            if (hit1.collider.tag == "BodyPart")
             {
-                target = collider.GetComponentInParent<OffensivePlaceables>();
-                enemyUnits.Add(target);
-                target = enemyUnits[0];
+                fractionalDistance = (Mathf.Max(0, 75 - Vector3.Distance(transform.position, hit1.transform.position))) / 75;
+                damage = scaledDamage * fractionalDistance + minimumDamage;
+                target = hit1.transform.GetComponentInParent<OffensivePlaceables>();
+
+                if (target != null && target.currentTeam != currentTeam)
+                {
+                    Debug.Log(target);
+                    enemyUnits.Add(target);
+                    target = enemyUnits[0];
+                    target.DealDamage(damage);
+                    enemyUnits.RemoveAt(0);
+                }
             }
         }
-
-        if (target != null)
-        {
-            target.DealDamage(expDmg);            
-            enemyUnits.RemoveAt(0);
-        }
-        source.PlayOneShot(boom);
         //Waits three seconds until the patricle effect has fully stopped, and then destroys itself.
-        yield return new WaitForSeconds(1.5f);
-        Destroy(this);
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }

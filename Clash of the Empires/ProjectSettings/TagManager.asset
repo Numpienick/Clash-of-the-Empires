@@ -10,6 +10,7 @@ TagManager:
   - SelectBox
   - BodyPart
   - CheckForEnemy
+  - Goldmine
   layers:
   - Default
   - TransparentFX

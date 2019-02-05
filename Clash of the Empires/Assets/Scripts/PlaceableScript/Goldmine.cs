@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Goldmine : Placeables
 {
-    public Player playerRef;
-    private GameObject player;
+    private Player playerRef;
+    private AIOpponent AIRef;
 
-    private float timeAlive = 60;
+    private float timeAlive = 20;
     private float timeToSpawn = 5;
 
     // Use this for initialization
@@ -15,9 +15,19 @@ public class Goldmine : Placeables
     {
         base.Start();
         healthbarOffsetY = 10f;
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerRef = player.transform.root.GetComponent<Player>();
-        InvokeRepeating("GenerateMoney", 5f, timeToSpawn);
+        switch (currentTeam)
+        {
+            case (1):
+                playerRef = FindObjectOfType<Player>();
+                InvokeRepeating("GenerateMoney", 5f, timeToSpawn);
+                break;
+
+            case (2):
+                AIRef = FindObjectOfType<AIOpponent>();
+                InvokeRepeating("GenerateMoney", 5f, timeToSpawn);
+                break;
+        }
+        
     }
 
     public override void Update()
@@ -28,6 +38,16 @@ public class Goldmine : Placeables
 
     void GenerateMoney()
     {
-        playerRef.money +=250;
+        switch (currentTeam)
+        {
+            case (1):
+                playerRef.money += 250;
+                break;
+
+            case (2):
+                Debug.Log("giving money");
+                AIRef.money += 250;
+                break;
+        }        
     }
 }

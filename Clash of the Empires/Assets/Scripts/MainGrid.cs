@@ -1,64 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class MainGrid : MonoBehaviour
 {
     [SerializeField]
     private float size = 1f;
+    [SerializeField]
+    private LayerMask checkMask;
 
     [HideInInspector]
     public bool spawn;
 
-    private Player player;
-
-    private void Start()
+    public Vector3 GetNearestPointOnGrid(Vector3 position, float yCount)
     {
-        player = FindObjectOfType<Player>();
-    }
-
-    public Vector3 GetNearestPointOnGrid(Vector3 position)
-    {
-        position -= transform.position;
-
+        Vector3 pos;
         int xCount = Mathf.RoundToInt(position.x / size);
-        int yCount = Mathf.RoundToInt(position.y / size);
         int zCount = Mathf.RoundToInt(position.z / size);
 
         Vector3 result = new Vector3(
             (float)xCount * size,
-            (float)yCount * size,
+            (float)yCount,
             (float)zCount * size);
 
-        result += transform.position;
-
-        int layerMask = 1 << 9;
-       Collider[] intersecting = Physics.OverlapSphere(result, 0.01f, layerMask);
+        int layerMask = checkMask;
+        Collider[] intersecting = Physics.OverlapBox(pos = new Vector3(result.x, result.y + 3.75f, result.z), new Vector3(10, 7.5f, 10), Quaternion.identity, layerMask, QueryTriggerInteraction.Ignore);
         if (intersecting.Length == 0)
         {
-            Debug.Log("You can spawn");
             spawn = true;
         }
         else
         {
-            Debug.Log("You can't spawn" + result + intersecting[0]);
-            spawn = false;
+            if (intersecting[0].transform.parent != null)
+            {
+                if (intersecting[0].transform.parent.position != Vector3.zero)
+                {
+                    RandomPoint(result, 20, out result);
+                    result = GetNearestPointOnGrid(result, yCount);
+                }
+            }
+            if (intersecting[0].transform.parent == null)
+            {
+                RandomPoint(result, 20, out result);
+                result = GetNearestPointOnGrid(result, yCount);
+            }
         }
-
         return result;
     }
 
-    /*private void OnDrawGizmos()
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-        Gizmos.color = Color.yellow;
-        for (float x = 0; x < 40; x += size)
+        for (int i = 0; i < 30; i++)
         {
-            for (float z = 0; z < 40; z += size)
+            Vector3 randomPoint = center + Random.insideUnitSphere * range;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 10, NavMesh.AllAreas))
             {
-                var point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
-                Gizmos.DrawSphere(point, 0.1f);
+                result = hit.position;
+                return true;
             }
-
         }
-    }*/
+        result = Vector3.zero;
+        return false;
+    }
 }

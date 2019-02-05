@@ -6,6 +6,13 @@ using UnityEngine.AI;
 
 public class Placeables : MonoBehaviour
 {
+    public bool turret = false;
+
+    public bool moveToTarget;
+
+    [HideInInspector]
+    public Placeables target;
+
     [HideInInspector]
     public bool dead = false;
 
@@ -36,6 +43,7 @@ public class Placeables : MonoBehaviour
     public virtual void Start()
     {
         canvas = GetComponentInChildren<Canvas>();
+        checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
         if (canvas != null)
         {
             healthBar = canvas.GetComponent<RectTransform>();
@@ -66,9 +74,6 @@ public class Placeables : MonoBehaviour
     {
         dead = true;
         CheckForEnemy scriptRef = GetComponentInChildren<CheckForEnemy>();
-        if (scriptRef != null && scriptRef.enemy != null)
-            scriptRef.enemy.checkForEnemyRef.enemies.RemoveAt(0);
-
         if (gameObject != null)
             Destroy(gameObject);
     }

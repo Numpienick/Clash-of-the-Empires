@@ -12,14 +12,13 @@ public class Player : ClashOfTheEmpires
     public GameObject pauseMenuUI;
 
     public Player enemy;
-    private bool AI;
     public int money = 1000;
 
     public GameObject turret;
     public GameObject goldmine;
     public GameObject archer;
     public GameObject barbarian;
-    public GameObject achmed;
+    public GameObject bomber;
     public GameObject healer;
 
     private MainGrid grid;
@@ -48,20 +47,9 @@ public class Player : ClashOfTheEmpires
     // Use this for initialization
     void Start()
     {
-        //ik wou bezig met AI van de enemy maarja das nie nodig
-        /*
-        Player[] players;
-        players = FindObjectsOfType<Player>();
-        foreach(Player player in players)
-        {
-            if (player.currentTeam != currentTeam)
-                enemy = player;
-        }*/
-
         selectedObjects = new List<GameObject>();
         selectableObjects = new List<GameObject>();
         cam = Camera.main;
-        currentTeam = 0;
         grid = FindObjectOfType<MainGrid>();
     }
 
@@ -110,7 +98,7 @@ public class Player : ClashOfTheEmpires
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-               Turret(hitInfo.point);
+                Turret(hitInfo.point);
             }
         }
 
@@ -120,65 +108,9 @@ public class Player : ClashOfTheEmpires
         }
     }
 
-    void SelectObjects()
-    {
-        List<GameObject> remObjects = new List<GameObject>();
-
-        if (Input.GetKey("left ctrl") == false)
-        {
-            clearSelection();
-        }
-
-        Rect selectionRect = new Rect(mousePos1.x, mousePos1.y, mousePos2.x - mousePos1.x, mousePos2.y - mousePos1.y);
-
-        foreach (GameObject selectObject in selectableObjects)
-        {
-            if (selectObject != null)
-            {
-                if (selectionRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
-                {
-                    selectedObjects.Add(selectObject);
-                    selectObject.GetComponent<ClickOn>().currentlySelected = true;
-                    selectObject.GetComponent<ClickOn>().ClickMe();
-                }
-            }
-            else
-            {
-                remObjects.Add(selectObject);
-            }
-        }
-
-        if (remObjects.Count > 0)
-        {
-            foreach (GameObject rem in remObjects)
-            {
-                selectableObjects.Remove(rem);
-            }
-
-            remObjects.Clear();
-        }
-    }
-
-    void clearSelection()
-    {
-        if (selectedObjects.Count > 0)
-        {
-            foreach (GameObject obj in selectedObjects)
-            {
-                if (obj != null)
-                {
-                    obj.GetComponent<ClickOn>().currentlySelected = false;
-                    obj.GetComponent<ClickOn>().ClickMe();
-                }
-            }
-            selectedObjects.Clear();
-        }
-    }
-
     public Vector3 GetPointUnderCursor()
     {
         Vector2 screenPosition = Input.mousePosition;
-        Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(screenPosition);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitPosition;
@@ -190,24 +122,20 @@ public class Player : ClashOfTheEmpires
 
     public void PlaceUnit(int cost, float unitHealth, GameObject unitType)
     {
-        if (money - cost >= 0)
+        if (money - cost >= 500)
         {
             money -= cost;
             Instantiate(unitType, new Vector3(Random.Range(-390, -490), 0, Random.Range(-470, -370)), Quaternion.identity);
-        }
-        if (money - cost <= 0)
-        {
-            Debug.Log("Skere Tijden");
         }
     }
 
     public void Turret(Vector3 clickPoint)
     {
-        finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        if (money - 200 >= 0 && grid.spawn)
+        finalPosition = grid.GetNearestPointOnGrid(clickPoint, 14.5f);
+        if (money - 500 >= 0 && grid.spawn)
         {
             turret.transform.position = finalPosition;
-            money -= 200;
+            money -= 500;
             Instantiate(turret, finalPosition, Quaternion.identity);
             turretSelected = false;
         }
@@ -215,11 +143,11 @@ public class Player : ClashOfTheEmpires
 
     public void goldMine(Vector3 clickPoint)
     {
-        finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        if (money - 200 >= 0 && grid.spawn)
+        finalPosition = grid.GetNearestPointOnGrid(clickPoint, 0.025f);
+        if (money - 500 >= 0 && grid.spawn)
         {
             goldmine.transform.position = finalPosition;
-            money -= 200;
+            money -= 500;
             Instantiate(goldmine, finalPosition, Quaternion.identity);
             goldmineSelected = false;
         }
@@ -237,33 +165,22 @@ public class Player : ClashOfTheEmpires
 
     public void Archer()
     {
-        PlaceUnit(300, 200, archer);
+        PlaceUnit(175, 200, archer);
     }
 
     public void Barbarian()
     {
-        PlaceUnit(400, 200, barbarian);
+        PlaceUnit(125, 200, barbarian);
     }
 
-    public void Achmed()
+    public void Bomber()
     {
-        PlaceUnit(500, 200, achmed);
+        PlaceUnit(600, 200, bomber);
     }
 
     public void Healer()
     {
         PlaceUnit(600, 200, healer);
-    }
-    public void SpawnGoldMine()
-    {
-        if (money - 200 >= 0)
-        {
-            goldmine.transform.position = finalPosition;
-            money -= 200;
-            //Debug.Log(clickPoint + " finalpos: " + finalPosition);
-            Instantiate(goldmine, finalPosition, Quaternion.identity);
-            goldmineSelected = false;
-        }
     }
 
     public void Resume()
@@ -283,13 +200,10 @@ public class Player : ClashOfTheEmpires
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quitting Game");
         Application.Quit();
     }
-
 }

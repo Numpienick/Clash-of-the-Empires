@@ -6,27 +6,43 @@ using UnityEngine;
 public class CheckForEnemy : MonoBehaviour
 {
     [HideInInspector]
-    public OffensivePlaceables offensivePlaceablesRef;
+    public Placeables offensivePlaceablesRef;
 
     public bool readyToShoot = false;
 
-    [HideInInspector]
-    public List<OffensivePlaceables> enemies = new List<OffensivePlaceables>(0);
+    //[HideInInspector]
+    public List<Placeables> enemies = new List<Placeables>(0);
 
     [HideInInspector]
-    public OffensivePlaceables enemy = null;
+    public Placeables enemy = null;
 
-    OffensivePlaceables[] targets = null;
+    Placeables[] targets = null;
 
     // Use this for initialization
     void Awake()
     {
-        offensivePlaceablesRef = transform.root.GetComponent<OffensivePlaceables>();
+        offensivePlaceablesRef = transform.root.GetComponent<Placeables>();
     }
 
     private void Update()
     {
-        if (enemy == null)
+        for (int i = 0; i < enemies.Count;)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.RemoveAt(i);
+            }
+
+            else
+                i++;
+        }
+
+        if (enemies.Count > 0)
+        {
+            enemy = enemies[0];
+        }
+
+        if (enemy == null && offensivePlaceablesRef != null)
         {
             readyToShoot = false;
             offensivePlaceablesRef.moveToTarget = false;
@@ -35,16 +51,17 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "CheckForEnemy")
-            targets = other.GetComponentsInParent<OffensivePlaceables>();
+        if (other.tag == "CheckForEnemy" || other.tag == "Goldmine")
+            targets = other.GetComponentsInParent<Placeables>();
 
         if (targets != null)
         {
             for (int i = 0; i < targets.Length; i++)
             {
-                if (targets[i].currentTeam != offensivePlaceablesRef.currentTeam)
+                if (targets[i].currentTeam != offensivePlaceablesRef.currentTeam && enemies.Contains(targets[i]) == false)
                 {
-                    enemies.Add(targets[i]);
+                    enemy = targets[i];
+                    enemies.Add(enemy);
                     enemy = enemies[0];
                 }
             }
@@ -52,7 +69,9 @@ public class CheckForEnemy : MonoBehaviour
             if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
             {
                 if (offensivePlaceablesRef.turret == false)
+                {
                     offensivePlaceablesRef.moveToTarget = true;
+                }
                 readyToShoot = true;
                 offensivePlaceablesRef.target = enemy;
             }
@@ -61,14 +80,17 @@ public class CheckForEnemy : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
+        Placeables target = null;
         if (other.tag == "CheckForEnemy")
         {
-            if (enemy != null && offensivePlaceablesRef.currentTeam != enemy.currentTeam)
-            {
-                enemies.Remove(enemy);
-                offensivePlaceablesRef.moveToTarget = false;
-                enemy = null;
-            }
+            target = other.GetComponent<Placeables>();
+        }
+
+        if (target != null && target.currentTeam != offensivePlaceablesRef.currentTeam)
+        {
+            enemies.Remove(target);
+            offensivePlaceablesRef.moveToTarget = false;
+            enemy = null;
         }
     }
 }

@@ -13,8 +13,6 @@ public class Healing : MonoBehaviour
 
     OffensivePlaceables[] targets = null;
 
-    bool heal = false;
-
     private void Start()
     {
         offensivePlaceablesRef = GetComponentInParent<OffensivePlaceables>();
@@ -23,9 +21,12 @@ public class Healing : MonoBehaviour
 
     private void Update()
     {
+        if (unit == null)
+            offensivePlaceablesRef.moveToTarget = false;
         if (unit != null && units.Count > 1 && unit.currentHealth >= unit.maxHealth)
             units.Remove(unit);
     }
+
     IEnumerator Heal()
     {
         while (true)
@@ -36,7 +37,7 @@ public class Healing : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "BodyPart")
             targets = other.GetComponentsInParent<OffensivePlaceables>();
@@ -51,10 +52,24 @@ public class Healing : MonoBehaviour
                     unit = units[0];
                 }
             }
-
             offensivePlaceablesRef.moveToTarget = true;
             offensivePlaceablesRef.target = units[units.Count - 1];
         }
+    }
 
+    public void OnTriggerExit(Collider other)
+    {
+        OffensivePlaceables target = null;
+        if (other.tag == "CheckForEnemy")
+        {
+            target = other.GetComponent<OffensivePlaceables>();
+        }
+
+        if (target != null && offensivePlaceablesRef.currentTeam == target.currentTeam)
+        {
+            units.Remove(target);
+            offensivePlaceablesRef.moveToTarget = false;
+            target = null;
+        }
     }
 }

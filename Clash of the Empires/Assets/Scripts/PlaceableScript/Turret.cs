@@ -4,15 +4,17 @@ public class Turret : OffensivePlaceables
 {
     public float shockRate = 0.6f;
     public GameObject lightningStrike;
+    public GameObject endOfGO;
     public bool striking = false;
 
     public override void Start()
     {
         base.Start();
+        lightningStrike.SetActive(false);
         healthbarOffsetY = 24;
         damage = 5;
         checkForEnemyRef = GetComponentInChildren<CheckForEnemy>();
-        lightningStrike.SetActive(false);
+
         striking = false;
     }
 
@@ -20,6 +22,9 @@ public class Turret : OffensivePlaceables
     {
         base.Update();
         moveToTarget = false;
+
+        if (checkForEnemyRef.enemy != null)
+            endOfGO.transform.position = checkForEnemyRef.enemy.transform.position;
 
         if (checkForEnemyRef.readyToShoot)
         {
@@ -47,9 +52,7 @@ public class Turret : OffensivePlaceables
     {
         if (checkForEnemyRef.enemy != null)
         {
-            target.DealDamage(damage);
-            if (checkForEnemyRef.enemy != null)
-                lightningStrike.transform.LookAt(checkForEnemyRef.enemy.transform);
+            target.DealDamage(damage);           
         }
     }
 }

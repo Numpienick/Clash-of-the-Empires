@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask clickablesLayer;
 
-    
+
     private List<GameObject> selectedObjects;
 
     [HideInInspector]
@@ -18,14 +18,14 @@ public class Movement : MonoBehaviour
     private NavMeshAgent agent;
     public LayerMask groundLayer;
     public OffensivePlaceables offensivePlaceablesRef;
-    Camera cam;
 
+    private Player player;
 
     private void Awake()
     {
+        player = GetComponentInParent<Player>();
         selectedObjects = new List<GameObject>();
         selectableObjects = new List<GameObject>();
-        cam = Camera.main;
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         if (agent != null && agent.isOnNavMesh)
         {
             float dist = agent.remainingDistance;
-            
+
             if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && dist - agent.stoppingDistance <= 0)
             {
                 offensivePlaceablesRef.moveToTarget = true;
@@ -74,28 +74,31 @@ public class Movement : MonoBehaviour
             {
                 ClickOn clickOnScript = rayHit.collider.GetComponent<ClickOn>();
 
-                if (Input.GetKey("left ctrl"))
+                if (clickOnScript != null)
                 {
-                    if (clickOnScript.currentlySelected == false)
+                    if (Input.GetKey("left ctrl"))
                     {
+                        if (clickOnScript.currentlySelected == false)
+                        {
+                            selectedObjects.Add(rayHit.collider.gameObject);
+                            clickOnScript.currentlySelected = true;
+                            clickOnScript.ClickMe();
+                        }
+                        else
+                        {
+                            selectedObjects.Remove(rayHit.collider.gameObject);
+                            clickOnScript.currentlySelected = false;
+                            clickOnScript.ClickMe();
+                        }
+                    }
+                    else
+                    {
+                        clearSelection();
+
                         selectedObjects.Add(rayHit.collider.gameObject);
                         clickOnScript.currentlySelected = true;
                         clickOnScript.ClickMe();
                     }
-                    else
-                    {
-                        selectedObjects.Remove(rayHit.collider.gameObject);
-                        clickOnScript.currentlySelected = false;
-                        clickOnScript.ClickMe();
-                    }
-                }
-                else
-                {
-                    clearSelection();
-
-                    selectedObjects.Add(rayHit.collider.gameObject);
-                    clickOnScript.currentlySelected = true;
-                    clickOnScript.ClickMe();
                 }
             }
         }
@@ -124,8 +127,10 @@ public class Movement : MonoBehaviour
 
         foreach (GameObject selectObject in selectableObjects)
         {
-            if (selectObject != null)
+            //Debug.Log(player.currentTeam + " enemy: " + selectObject.GetComponent<Placeables>().currentTeam);
+            if (selectObject != null && selectObject.GetComponent<Placeables>().currentTeam == player.currentTeam)
             {
+
                 if (selectionRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
                 {
                     selectedObjects.Add(selectObject);
@@ -169,7 +174,7 @@ public class Movement : MonoBehaviour
     public Vector3 GetPointUnderCursor()
     {
         Vector2 screenPosition = Input.mousePosition;
-        Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(screenPosition);
+        //Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(screenPosition);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitPosition;
