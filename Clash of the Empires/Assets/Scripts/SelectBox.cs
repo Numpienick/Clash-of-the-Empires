@@ -6,7 +6,7 @@ public class SelectBox : MonoBehaviour
 {
 
     [SerializeField]
-    private RectTransform selectSquireImage;
+    private RectTransform selectSquareImage;
 
     private GameObject gameObjectRef;
 
@@ -19,7 +19,7 @@ public class SelectBox : MonoBehaviour
     void Start()
     {
         gameObjectRef = GameObject.FindGameObjectWithTag("SelectBox");
-        selectSquireImage.gameObject.SetActive(false);
+        selectSquareImage.gameObject.SetActive(false);
         player = FindObjectOfType<Player>();
     }
 
@@ -45,14 +45,14 @@ public class SelectBox : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                selectSquireImage.gameObject.SetActive(false);
+                selectSquareImage.gameObject.SetActive(false);
             }
 
             if (Input.GetMouseButton(0))
             {
-                if (!selectSquireImage.gameObject.activeInHierarchy)
+                if (!selectSquareImage.gameObject.activeInHierarchy)
                 {
-                    selectSquireImage.gameObject.SetActive(true);
+                    selectSquareImage.gameObject.SetActive(true);
                 }
 
                 endPos = Input.mousePosition;
@@ -63,12 +63,12 @@ public class SelectBox : MonoBehaviour
 
                 Vector3 center = (squareStart + endPos) / 2f;
 
-                selectSquireImage.position = center;
+                selectSquareImage.position = center;
 
                 float sizeX = Mathf.Abs(squareStart.x - endPos.x);
                 float sizeY = Mathf.Abs(squareStart.y - endPos.y);
 
-                selectSquireImage.sizeDelta = new Vector2(sizeX, sizeY);
+                selectSquareImage.sizeDelta = new Vector2(sizeX, sizeY);
             }
 
         }

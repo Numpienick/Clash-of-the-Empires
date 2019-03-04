@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-public class Player : ClashOfTheEmpires
+public class Player : MonoBehaviour
 {
+    public int gridSize = 20;
+    public int currentTeam = 1;
+
     [HideInInspector]
     public bool gameIsPaused = false;
 
@@ -14,6 +17,7 @@ public class Player : ClashOfTheEmpires
     public Player enemy;
     public int money = 1000;
 
+    //All of the units
     public GameObject turret;
     public GameObject goldmine;
     public GameObject archer;
@@ -70,42 +74,21 @@ public class Player : ClashOfTheEmpires
             }
         }
 
-        if (Input.GetKeyDown("m"))
-        {
-            money += 1000;
-        }
-
         if (goldmineSelected == true && Input.GetMouseButtonDown(1))
-        {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            SpawnBuilding(GetPointUnderCursor(), 500, goldmine);
 
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                goldMine(hitInfo.point);
-            }
-        }
 
         if (goldmineSelected == true && Input.GetMouseButtonDown(0))
-        {
             goldmineSelected = false;
-        }
+
 
         if (turretSelected == true && Input.GetMouseButtonDown(1))
-        {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            SpawnBuilding(GetPointUnderCursor(), 500, turret);
 
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                Turret(hitInfo.point);
-            }
-        }
 
         if (turretSelected == true && Input.GetMouseButtonDown(0))
-        {
             turretSelected = false;
-        }
+
     }
 
     public Vector3 GetPointUnderCursor()
@@ -120,6 +103,7 @@ public class Player : ClashOfTheEmpires
         return hitPosition.point;
     }
 
+    //Deploying of the unit
     public void PlaceUnit(int cost, float unitHealth, GameObject unitType)
     {
         if (money - cost >= 500)
@@ -129,27 +113,16 @@ public class Player : ClashOfTheEmpires
         }
     }
 
-    public void Turret(Vector3 clickPoint)
-    {
-        finalPosition = grid.GetNearestPointOnGrid(clickPoint, 14.5f);
-        if (money - 500 >= 0 && grid.spawn)
-        {
-            turret.transform.position = finalPosition;
-            money -= 500;
-            Instantiate(turret, finalPosition, Quaternion.identity);
-            turretSelected = false;
-        }
-    }
-
-    public void goldMine(Vector3 clickPoint)
+    public void SpawnBuilding(Vector3 clickPoint, int cost, GameObject building)
     {
         finalPosition = grid.GetNearestPointOnGrid(clickPoint, 0.025f);
-        if (money - 500 >= 0 && grid.spawn)
+        if (money - cost >= 0 && grid.spawn)
         {
-            goldmine.transform.position = finalPosition;
-            money -= 500;
-            Instantiate(goldmine, finalPosition, Quaternion.identity);
+            building.transform.position = finalPosition;
+            money -= cost;
+            Instantiate(building, finalPosition, Quaternion.identity);
             goldmineSelected = false;
+            turretSelected = false;
         }
     }
 

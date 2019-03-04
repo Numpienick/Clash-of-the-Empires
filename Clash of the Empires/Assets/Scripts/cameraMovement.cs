@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class cameraMovement : MonoBehaviour {
-
+public class CameraMovement : MonoBehaviour
+{
     public float panSpeed = 20f;
     public float panBorderThickness = 10;
     public Vector2 panLimit;
@@ -10,21 +10,22 @@ public class cameraMovement : MonoBehaviour {
     public float maxY = 200f;
     public float pivotSpeed = 100f;
 
-    void Update () {
-        
+    void Update()
+    {
+
         Vector3 pos = transform.position;
-        //movement(wasd)
+        //Movement(wasd)
         transform.Translate(Input.GetAxis("Horizontal") * panSpeed * Time.deltaTime * Vector3.right);
         transform.Translate(Input.GetAxis("Vertical") * panSpeed * Time.deltaTime * Vector3.forward);
-        //rotate camera(qe)
+        //Rotate camera(qe)
         transform.Rotate(Input.GetAxis("Rotate") * pivotSpeed * Vector3.down * Time.deltaTime);
 
-        //scroll/zoom
+        //Scroll/zoom
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         pos = transform.position;
-        pos.y -= scroll * scrollSpeed * 100f *  Time.deltaTime;
+        pos.y -= scroll * scrollSpeed * 100f * Time.deltaTime;
 
-        //clamp camera
+        //Clamp camera
         pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);

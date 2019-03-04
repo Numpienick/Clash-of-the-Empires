@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask clickablesLayer;
 
-
     private List<GameObject> selectedObjects;
 
     [HideInInspector]
@@ -64,13 +63,14 @@ public class Movement : MonoBehaviour
             }
         }
 
+        //Shoots a ray and if it hits a unit makes the unit selected
         if (Input.GetMouseButtonDown(0))
         {
             mousePos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
             RaycastHit rayHit;
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayHit, Mathf.Infinity, clickablesLayer))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayHit, Mathf.Infinity, clickablesLayer, QueryTriggerInteraction.Collide))
             {
                 ClickOn clickOnScript = rayHit.collider.GetComponent<ClickOn>();
 
@@ -114,6 +114,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+    //Creates the 2D rectangle and selects all the units inside of that rectangle
     void SelectObjects()
     {
         List<GameObject> remObjects = new List<GameObject>();
@@ -123,14 +124,12 @@ public class Movement : MonoBehaviour
             clearSelection();
         }
 
-        Rect selectionRect = new Rect(mousePos1.x, mousePos1.y, mousePos2.x - mousePos1.x, mousePos2.y - mousePos1.y);
+        Rect selectionRect = new Rect(mousePos1.x, mousePos1.y, mousePos2.x - mousePos1.x, mousePos2.y - mousePos1.y); //The limegreen selectbox rectangle
 
         foreach (GameObject selectObject in selectableObjects)
         {
-            //Debug.Log(player.currentTeam + " enemy: " + selectObject.GetComponent<Placeables>().currentTeam);
             if (selectObject != null && selectObject.GetComponent<Placeables>().currentTeam == player.currentTeam)
             {
-
                 if (selectionRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
                 {
                     selectedObjects.Add(selectObject);
@@ -144,6 +143,7 @@ public class Movement : MonoBehaviour
             }
         }
 
+        //Removes the units that have been selected from the selectable units list
         if (remObjects.Count > 0)
         {
             foreach (GameObject rem in remObjects)
@@ -155,6 +155,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+    //Returns the selected units to their non selected state
     void clearSelection()
     {
         if (selectedObjects.Count > 0)
@@ -174,7 +175,6 @@ public class Movement : MonoBehaviour
     public Vector3 GetPointUnderCursor()
     {
         Vector2 screenPosition = Input.mousePosition;
-        //Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(screenPosition);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitPosition;

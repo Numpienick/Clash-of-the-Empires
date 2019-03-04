@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class Barbarian : OffensivePlaceables
 {
     Sword swordScript;
 
-    //Setting variables and getting components
     public override void Start()
     {
         base.Start();
@@ -31,7 +27,7 @@ public class Barbarian : OffensivePlaceables
 
     void Attack()
     {
-        //Call the fucntion that'll deal damage
+        //Call the function that'll deal damage
         swordScript.Attack(damage);
     }
 }

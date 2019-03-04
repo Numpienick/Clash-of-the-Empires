@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healer : OffensivePlaceables {
-
+public class Healer : OffensivePlaceables
+{
     // Use this for initialization
     public override void Start()
     {

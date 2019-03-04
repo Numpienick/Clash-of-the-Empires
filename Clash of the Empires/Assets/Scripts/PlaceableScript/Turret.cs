@@ -52,7 +52,7 @@ public class Turret : OffensivePlaceables
     {
         if (checkForEnemyRef.enemy != null)
         {
-            target.DealDamage(damage);           
+            target.DealDamage(damage);
         }
     }
 }

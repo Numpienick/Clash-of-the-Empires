@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Bomber : OffensivePlaceables
 {
-    //List of variables 
-    public AudioClip detonate;
     public GameObject explosion;
 
     public bool inDetonateRange = false;
     public bool isExploding = false;
-    AudioSource source;
 
     public override void Start()
     {
         base.Start();
-        source = GetComponent<AudioSource>();
-        //Getting the component for the audio clips.
     }
 
     public override void Update()
@@ -48,7 +43,6 @@ public class Bomber : OffensivePlaceables
 
     IEnumerator Explode()
     {
-        source.PlayOneShot(detonate);
         yield return new WaitForSeconds(1.5f);
         //Plays the sound clip, waits the time before the clip has played long enough, and instantiates 
         //a gameobject with a particle system, which has the full explosion sound effect, and which handles damage.

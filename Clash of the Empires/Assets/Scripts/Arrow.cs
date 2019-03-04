@@ -12,7 +12,7 @@ public class Arrow : MonoBehaviour
     private float speed = 8f;
 
     private void Start()
-        //Refrence to the unit and the arrow's starting velocity
+    //Reference to the unit and the arrow's starting velocity
     {
         myUnit = GetComponentInParent<OffensivePlaceables>();
         velocity = new Vector3(0, 1, 20);
@@ -26,22 +26,23 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Checks if the hit collider is a trigger
-       if (other.isTrigger != true)
+        if (other.isTrigger != true)
         {
-           // Sets the arrow's parent to that of the hit object, so that it sticks.
+            // Sets the arrow's parent to that of the hit object, so that it sticks.
             gravity = 0;
             velocity = new Vector3(0, 0, 0);
 
-           this.transform.parent = other.transform;
+            this.transform.parent = other.transform;
         }
-        
-       //Checks if the arrow has hit a bodypart and deals damage to the body part's parent.
+
+        //Checks if the arrow has hit a bodypart and deals damage to the body part's parent.
         Placeables enemyUnit = null;
         if (other.CompareTag("BodyPart"))
         {
             enemyUnit = other.GetComponentInParent<Placeables>();
         }
 
+        //Deals damage to the target it has hit if it is an enemy
         if (enemyUnit != null && enemyUnit.currentTeam != myUnit.currentTeam)
         {
             enemyUnit.DealDamage(myUnit.damage);

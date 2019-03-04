@@ -9,7 +9,6 @@ public class Archer : OffensivePlaceables
     public GameObject Bullet_Emitter;
     public Transform arrowHolder;
 
-    //setting and getting variables
     public override void Start()
     {
         base.Start();
@@ -20,30 +19,13 @@ public class Archer : OffensivePlaceables
     public override void Update()
     {
         base.Update();
-        //adjusting the stopping distance of the Archer according to which "mode" it's in
-        /*switch (checkForEnemyRef.readyToShoot)
-        {
-            case (true):
-                agent.stoppingDistance = 40;
-                break;
-
-            case (false):
-                agent.stoppingDistance = 10;
-                break;
-        }*/
         //Finding where the archer needs to aim at
         if (checkForEnemyRef.enemy != null)
         {
             Bullet_Emitter.transform.LookAt(checkForEnemyRef.enemy.transform.Find("LookAtMe"));
         }
 
-        //Manually shooting for debugging purposes
-        /*f (Input.GetKey("h"))
-         {
-             Shoot();
-         }*/
-
-        //letting the archer shoot according to it's fire rate and whether or not it has found an enemy
+        //Letting the archer shoot according to it's fire rate and whether or not it has found an enemy
         if (checkForEnemyRef.readyToShoot == true && moveToTarget == true && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
@@ -51,7 +33,7 @@ public class Archer : OffensivePlaceables
         }
     }
 
-    //Instantiate an arrow and destory it after 10 seconds
+    //Instantiate an arrow and destroy it after 10 seconds
     public void Shoot()
     {
         GameObject Temporary_Bullet_Handler;

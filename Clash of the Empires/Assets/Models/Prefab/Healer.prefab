@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114784543541579472}
   - component: {fileID: 195273884577171746}
   - component: {fileID: 114542240801362694}
+  - component: {fileID: 136184640549702820}
   m_Layer: 8
   m_Name: Healer
   m_TagString: Placeables
@@ -545,6 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c77476f5c2cc164b816dbfbbdb7903f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret: 0
+  moveToTarget: 0
+  target: {fileID: 0}
   dead: 0
   currentTeam: 1
   currentHealth: 20
@@ -560,9 +564,6 @@ MonoBehaviour:
   nextTimeToFire: 0
   damage: 0
   fireRate: 15
-  target: {fileID: 0}
-  moveToTarget: 0
-  turret: 0
 --- !u!114 &114744702444763468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -628,6 +629,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136184640549702820
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460325604208400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195273884577171746
 NavMeshAgent:

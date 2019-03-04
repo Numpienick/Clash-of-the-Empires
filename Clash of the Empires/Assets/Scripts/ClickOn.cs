@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ClickOn : MonoBehaviour
 {
+    [SerializeField]
+    private Material notSelected;
 
     [SerializeField]
-
-    private Material red;
-
-    [SerializeField]
-
-    private Material green;
+    private Material selected;
 
     private MeshRenderer myRend;
 
@@ -21,7 +16,7 @@ public class ClickOn : MonoBehaviour
     private void Start()
     {
         myRend = GetComponent<MeshRenderer>();
-        Camera.main.gameObject.GetComponent<Movement>().selectableObjects.Add(this.gameObject);
+        Camera.main.gameObject.GetComponent<Movement>().selectableObjects.Add(this.gameObject); //Adds the unit to the selectableObjects list
         ClickMe();
     }
 
@@ -29,13 +24,12 @@ public class ClickOn : MonoBehaviour
     {
         if (currentlySelected == false)
         {
-            myRend.material = red;
+            myRend.material = notSelected;
         }
 
         else
-
         {
-            myRend.material = green;
+            myRend.material = selected;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
@@ -73,7 +71,6 @@ public class Placeables : MonoBehaviour
     public void Die()
     {
         dead = true;
-        CheckForEnemy scriptRef = GetComponentInChildren<CheckForEnemy>();
         if (gameObject != null)
             Destroy(gameObject);
     }

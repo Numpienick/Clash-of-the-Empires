@@ -29,15 +29,18 @@ public class Boom : MonoBehaviour
         RaycastHit[] hitinfo = Physics.SphereCastAll(transform.position, 50, Vector3.forward, 50, int.MaxValue, QueryTriggerInteraction.UseGlobal);
         foreach (RaycastHit hit1 in hitinfo)
         {
+            //If it hits a body of a unit the script continues
             if (hit1.collider.tag == "BodyPart")
             {
+                ///Calculates the damage depending on the distance between the explosion and the target
                 fractionalDistance = (Mathf.Max(0, 75 - Vector3.Distance(transform.position, hit1.transform.position))) / 75;
                 damage = scaledDamage * fractionalDistance + minimumDamage;
                 target = hit1.transform.GetComponentInParent<OffensivePlaceables>();
+                ///Also gets the target's script so it can deal damage
 
+                //checks if the target is an enemy and if so deals damage
                 if (target != null && target.currentTeam != currentTeam)
                 {
-                    Debug.Log(target);
                     enemyUnits.Add(target);
                     target = enemyUnits[0];
                     target.DealDamage(damage);
