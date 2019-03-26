@@ -313,11 +313,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 195854409281998920, guid: 1aa3ad345cf106d4498db31426933e54,
-        type: 2}
-      propertyPath: m_StoppingDistance
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1962489227087464, guid: 1aa3ad345cf106d4498db31426933e54, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -1984,9 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9d77e6ff779424ead337020af13b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 0
   gridSize: 0
-  amountOfTeams: 0
   currentTeam: 1
   gameIsPaused: 0
   pauseMenuUI: {fileID: 1584984522}
@@ -3028,9 +3021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03f78df760cb8c439ac4a69351ee8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 0
   gridSize: 0
-  amountOfTeams: 0
   currentTeam: 2
   enemy: {fileID: 0}
   money: 2000
@@ -4135,7 +4126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4410633437547088, guid: 74418722e637edc42af3401552759abe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.7
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 4410633437547088, guid: 74418722e637edc42af3401552759abe, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4165,10 +4156,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437212837374478, guid: 74418722e637edc42af3401552759abe, type: 2}
-      propertyPath: m_TagString
-      value: CheckForEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1463918430207836, guid: 74418722e637edc42af3401552759abe, type: 2}
       propertyPath: m_IsActive
@@ -4801,7 +4788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc399c76221e8845b9dd78240272606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSquireImage: {fileID: 1450570008}
+  selectSquareImage: {fileID: 0}
 --- !u!1 &2031213994
 GameObject:
   m_ObjectHideFlags: 0

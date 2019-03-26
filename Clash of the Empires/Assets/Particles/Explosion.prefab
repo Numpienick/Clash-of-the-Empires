@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 82744863581523110}
   - component: {fileID: 114200431015246750}
   m_Layer: 0
-  m_Name: AllahuAkbar
+  m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,9 +351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c49357cba4a4b34dbc49caf5ae8ebae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expDmg: 200
+  damage: 200
+  currentTeam: 0
   enemyUnits: []
   boom: {fileID: 8300000, guid: 7ef72064cf0a5e548912f2dec3c13dec, type: 3}
+  source: {fileID: 0}
 --- !u!198 &198210682996216886
 ParticleSystem:
   m_ObjectHideFlags: 1

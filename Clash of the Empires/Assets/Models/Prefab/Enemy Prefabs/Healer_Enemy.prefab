@@ -462,8 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece1d9d5aa14f8d48a92c7d7543bbda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: 0b3fe478ba0a25f4aa427e0307cb302a, type: 2}
-  green: {fileID: 2100000, guid: 653cf6f4e18f7e841ba26c24c2277c89, type: 2}
+  notSelected: {fileID: 0}
+  selected: {fileID: 0}
   currentlySelected: 0
 --- !u!114 &114186682910331718
 MonoBehaviour:
