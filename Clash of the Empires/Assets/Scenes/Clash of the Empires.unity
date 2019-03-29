@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   gameIsPaused: 0
   pauseMenuUI: {fileID: 1584984522}
   enemy: {fileID: 0}
-  money: 10000
+  money: 2000
   turret: {fileID: 1028525478081532, guid: 077fcfe5ec8643a4f8209f1b148486ac, type: 2}
   goldmine: {fileID: 1371746884821576, guid: 59f1f963e16a1b64784943b447e76eb5, type: 2}
   archer: {fileID: 1463918430207836, guid: 74418722e637edc42af3401552759abe, type: 2}
@@ -2641,7 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3097,7 +3097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4788,7 +4788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc399c76221e8845b9dd78240272606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSquareImage: {fileID: 0}
+  selectSquareImage: {fileID: 1450570008}
 --- !u!1 &2031213994
 GameObject:
   m_ObjectHideFlags: 0
@@ -4838,7 +4838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5060,7 +5060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5182,7 +5182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

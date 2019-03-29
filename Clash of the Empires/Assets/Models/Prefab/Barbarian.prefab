@@ -643,8 +643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece1d9d5aa14f8d48a92c7d7543bbda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: 7f85fd5363a88ac428aeefc76241fe04, type: 2}
-  green: {fileID: 2100000, guid: 20a8de7bd84084c47866f21e2c08d27d, type: 2}
+  notSelected: {fileID: 2100000, guid: 7f85fd5363a88ac428aeefc76241fe04, type: 2}
+  selected: {fileID: 2100000, guid: 20a8de7bd84084c47866f21e2c08d27d, type: 2}
   currentlySelected: 0
 --- !u!135 &135982228768010016
 SphereCollider:
