@@ -13,9 +13,8 @@ public class OffensivePlaceables : Placeables
     public float nextTimeToFire = 0f;
 
     public float damage = 0;
-    public float fireRate = 15f;   
+    public float fireRate = 15f;
 
-    // Use this for initialization
     public override void Awake()
     {
         base.Awake();
